@@ -1,8 +1,0 @@
-{
-    "PhotonServerAddressEditor": "192.168.0.20",
-    "PhotonServerAddressStandalone": "192.168.0.20",
-    "PhotonServerPort": 5055,
-    "ClientType": 2,
-    "OfflineMode": false,
-    "FirstChapter": 1
-}
