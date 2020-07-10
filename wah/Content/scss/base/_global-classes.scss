@@ -1,0 +1,144 @@
+
+//------------------------------------
+//  GLOBAL CLASSES
+//------------------------------------
+
+
+// Clearfix
+.cf,
+.clearfix {
+	*zoom: 1;
+}
+.cf:before, .cf:after,
+.clearfix:before, .clearfix:after {
+	content: " ";
+	display: table;
+}
+.cf,
+.clearfix:after {
+	clear: both;
+}
+
+
+
+// Hidden states
+
+// Completely remove from the flow and screen readers.
+.is-hidden {
+	display: none !important;
+	visibility: hidden !important;
+}
+
+// Completely remove from the flow but leave available to screen readers.
+.is-vishidden {
+	position: absolute !important;
+	overflow: hidden;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+}
+
+// keep the box, hide the content
+.is-content-hidden{
+	visibility: hidden;
+}
+
+// Hide content for background image
+.ir {
+	display: block;
+	border: 0;
+	direction: ltr;
+	text-indent: -999em;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	text-align: left;
+}
+
+.ir br { display: none;}
+
+
+
+// Get some stripes
+.zebra > div {
+	text-align: center;
+	background: #dddddd;
+	color: gray;
+}
+.zebra > div:nth-of-type(2n) {
+	background: gray;
+	color: #dddddd;
+}
+
+
+
+// Floats
+.right {float: right !important;}
+.left {float: left;}
+.clear {clear: both; overflow:auto;}
+
+
+
+// Text-Align
+.align-right {text-align: right;}
+.align-center {text-align: center;}
+.align-left {text-align: left;}
+
+
+
+// Single line truncation
+.truncate {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: block;
+}
+
+.multi-truncate {
+	display: block; /* Fallback for non-webkit */
+	display: -webkit-box;
+	/* HEIGHT AND MAX WIDTH TO BE SET ON ELEMENT */
+	margin: 0 auto;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+
+//Wrap text
+
+.wrap {
+	white-space: normal !important;
+}
+
+
+
+// Centered block element
+.centered {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+
+// Vertical Centered blocks
+.v-centered-parent {text-align: center; overflow: hidden;}
+
+// The ghost, nudged to maintain perfect centering
+.v-centered-parent:before {
+	content: '';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+	margin-right: -0.25em; /* Adjusts for spacing */
+}
+
+
+
+//States
+.valid {color: $valid;}
+.error {color: $error;}
+.information {color: $information;}

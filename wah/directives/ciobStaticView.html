@@ -1,0 +1,64 @@
+<!--<img class="fallbackImage" src="{{getFallbackImage()}}"  data-ng-if="renderMode === modeEnum.FALLBACK" />-->
+<div id="mainPanelHeader">
+        <div id="rotate">
+            <img data-ng-show="renderMode !== modeEnum.FALLBACK" class="img360" src="Content/img/360View.png"/>
+        </div>
+</div>
+<!-- data-ng-show="(infoText.length > 0)"> -->
+<div id="infoGroup"  data-ng-show="(infoText.length > 0)" data-ng-mouseenter="mouseInfoEnter()" data-ng-mouseleave="mouseInfoExit()">
+    <div id="infoHeader">
+        <img src="Content/img/headerLogo.png" height="100%" valign="middle"/>
+        <span>{{infoTitle}}</span>
+    </div>
+    <div id="infoContent">
+        {{infoText}}
+    </div>
+    <div id="infoButton" data-ng-click="CancelInfo()">
+        <center>OK</center>
+    </div>
+</div>
+
+<div id="introGroup"  data-ng-mouseenter="mouseInfoEnter()" data-ng-mouseleave="mouseInfoExit()" data-ng-if="(controller.currentSection.stepNumber === 1) && (controller.started === false)">
+    <div id="introHeader">
+        <img src="Content/img/headerLogoFull.png" height="100%" valign="middle"/>
+        <span></span>
+    </div>
+    <div id="introContent">
+        <center><img src="Content/img/WAH_cover_Landscape.png" height="100%" valign="middle"/>
+        <span>health & safety awareness experience</span>
+        </center>
+    </div>
+    <div id="introButton" data-ng-click="controller.Begin()">
+        <span>BEGIN</span>
+    </div>
+</div>
+
+<div id="infoPointCount" data-ng-if="(infoText.length === 0) && (controller.currentSection.stepNumber > 1) && (controller.currentSection.stepNumber < controller.MaxSections) && (numInfoPointsVisited < numInfoPoints)">
+    <span>{{controller.currentSection.infoPointCountText}}{{numInfoPointsVisited}}/{{numInfoPoints}}</span>
+</div>
+<div id="continueButton" data-ng-mouseenter="mouseInfoEnter()" data-ng-mouseleave="mouseInfoExit()" data-ng-click="controller.videoPlayPause()" data-ng-if="(infoText.length === 0) && (controller.currentSection.stepNumber > 1) && (controller.currentSection.stepNumber < controller.MaxSections) && (numInfoPointsVisited === numInfoPoints)">
+        <span>Continue</span>
+</div>
+
+<div id="outroGroup"  data-ng-mouseenter="mouseInfoEnter()" data-ng-mouseleave="mouseInfoExit()" data-ng-if="(controller.currentSection.stepNumber === controller.MaxSections)">
+    <div id="outroHeader">
+        <img src="Content/img/headerLogo.png" height="100%" valign="middle"/>
+        <span>Thank You</span>
+    </div>
+    <div id="outroContent">
+        <center>
+            <span>We hope you have found this experience to be both informative and enjoyable.<p>
+
+                    Vodafone is committed to improving health, safety and wellbeing standards across the entire telecommunications industry to ensure the safety of everyone involved in our operations.<p>
+
+                    Work safe.  Home safe.<p>
+                This experience was made real by       
+                </span>
+            <img class="seperator" src="Content/img/red.png"/>
+            <img class="logo" src="Content/img/MakeRealLogoAlpha.png"/>
+        </center>
+    </div>
+    <div id="outroButton" data-ng-click="controller.Quit()">
+        <span>Exit</span>
+    </div>
+</div>

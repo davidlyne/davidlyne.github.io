@@ -1,0 +1,58 @@
+
+//------------------------------------
+//  TABLE CLIENTS
+//------------------------------------
+.notification-bar{
+	width: 100%;
+	padding: 0.5em 0;
+	overflow: hidden;
+	position: relative;
+	height: 2em;
+
+	&__inner{
+		padding: 0.5em;
+		font-weight: bold;
+		position: absolute;
+		width: 100%;
+		top: 100%;
+
+		@include transition(all		.5s ease);
+	}
+
+
+	.is-info{		background-color: $color-notification-information;}
+	.is-success{	background-color: $color-notification-success;}
+	.is-warning{	background-color: $color-notification-warning;}
+	.is-error{		background-color: $color-notification-error;}
+	.is-filter{		background-color: $color-notification-filter;}
+
+	.is-displayed{
+		top:0%;
+		@include transition(all		.5s ease);
+	}
+}
+
+.bar-filter{
+	width: 100%;
+	padding: 0.5em 0;
+	overflow: hidden;
+	position: relative;
+	background-color: $color-notification-filter;
+
+	height:0;
+	opacity: 0;
+	transform: translateY(-100%);
+	@include transition(all		.3s ease);
+
+	&__inner{
+		padding: 0.5em;
+	}
+	.filters{font-weight: normal;}
+	
+	&.is-displayed{
+		height: 5em;
+		opacity: 1;
+		transform: translateY(0);
+		@include transition(all		.3s ease);
+	}
+}

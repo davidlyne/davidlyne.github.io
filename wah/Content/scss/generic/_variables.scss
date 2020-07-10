@@ -1,0 +1,309 @@
+
+//------------------------------------
+//  $VARIABLES
+//------------------------------------
+
+
+// Color swatches
+
+// Eurotherm colors
+$color-EURO-1				:#4FA600;	//Green
+$color-EURO-2				:#626469;	//Dark grey
+$color-EURO-3				:#e47f00;	//Orange buttons
+$color-EURO-4				:#b10043;	//Red/pink
+$color-EURO-5				:#42b4e6;	//Blue
+$color-EURO-background		:#f7f6f6;	//Very light grey
+
+
+// Primary color palette
+$color-EOS-1                  :#00A8E6; // 1 Blue
+$color-EOS-2                  :#FBD415; // 2 Yellow
+$color-EOS-3                  :#004875; // 3 Navy
+$color-EOS-4                  :#E10D58; // 4 Pink
+$color-EOS-5                  :#97B6C9; // 5 Dusty Blue
+$color-EOS-6                  :#357A8F; // 6 Teal
+$color-EOS-7                  :#E7A52F; // 7 Gold
+$color-EOS-8                  :#FF7400; // 8 Orange
+
+$color-EOS-9                  :#A5A4A4; // Brand Gray
+$color-EOS-10                 :#FF9900; // Brand Orange planned/medium priority
+
+$color-EOS-11				  :#DDF9D0;	// light green, manage engineer
+
+$color-selected:			lighten($color-EOS-5, 20%);
+
+$color-white				 :#FFFFFF;
+
+//	tag colors
+$color-tag-1				 :$color-EOS-7;
+
+
+// Gray-scale palette
+$color-gray-10               :#1E1D1D; // Near Black
+$color-gray-20               :#4D4D4D;
+$color-gray-30               :#666666;
+$color-gray-40               :#9F9E9E;
+$color-gray-50               :$color-EOS-9;
+$color-gray-60               :#C3C3C3;
+$color-gray-70               :#E7E6E6;
+$color-gray-80               :#FBFBFB; // Near White
+$dim                         :rgba(0,0,0,0.75); // Half opaque black
+
+// Various background/border colors
+$color-background-1:				$color-gray-70;
+$color-background-2:				$color-gray-70;
+$color-background-3:				$color-EOS-11;
+$color-background-3-hover:			darken($color-EOS-11, 5%);
+$color-background-item-selected:	#f2fee7;
+$color-border-item-selected:		$color-EURO-1;
+$color-background-item-hover:		darken($color-background-item-selected, 5%);
+$color-border-1:					$color-gray-30;
+$color-border-2:					$color-gray-50;
+$color-border-3:					$color-gray-70;
+$color-text-1:						$color-gray-30;
+$color-text-1-hover:				$color-gray-50;
+$color-text-2:						$color-gray-40;
+$color-title-1:						$color-EURO-1;
+// System colors
+// Blue
+$information                 :#5BC0DE;
+$information-light           :lighten($information, 20%);
+$information-dark            :darken($information, 30%);
+// Green
+$valid                       :#5CB85C;
+$valid-light                 :lighten($valid, 20%);
+$valid-dark                  :darken($valid, 30%);
+// Yellow
+$warning                     :#F0AD4E;
+$warning-light               :lighten($warning, 20%);
+$warning-dark                :darken($warning, 40%);
+// Red
+$error                       :#D9534F;
+$error-light                 :lighten($error, 20%);
+$error-dark                  :darken($error, 30%);
+
+// Priorities colors
+$color-priority-high: #EDB6A1;
+$color-priority-medium: #FADFAE;
+$color-priority-low: #CBE7A4;
+
+// Notification colors
+$color-notification-information:	$information-light;
+$color-notification-success:		$valid-light;
+$color-notification-warning:		$warning-light;
+$color-notification-error:			$error-light;
+// filter color
+$color-notification-filter:			$color-background-1;
+// Status color
+$color-status-due:			$color-gray-70;
+$color-status-rejected:		$error;
+$color-status-accepted:		$valid;
+$color-status-planned:		$color-EOS-10;
+$color-status-overdue:		darken($color-status-planned, 10%);
+
+// Calendar colors
+$color-cal-weekend:			#F2E4CF;
+$color-cal-planned:			#f7d39d;
+$color-cal-accepted:		#659265;
+$color-cal-weekend_2:		#00ABFF;
+$color-cal-admin:			#f1c2fe;
+$color-cal-holiday:			#d9534f;
+$color-cal-row-selected:	#B3E4E5;
+$color-cal-suggested:		$color-EURO-3;
+
+
+// Typography base
+
+$font-size-base              :100%;
+$line-height-base            :1.4;
+$font-color-base             :$color-gray-30;
+
+@mixin font-regular() {
+	font-weight: 400;
+	font-style: normal;
+	font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+@mixin font-italic() {
+	font-weight: 400;
+	font-style: normal;
+	font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+@mixin font-bold() {
+	font-weight: 400;
+	font-style: normal;
+	font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+@mixin font-bold-italic() {
+	font-weight: 400;
+	font-style: normal;
+	font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+@mixin font-medium() {
+	font-weight: 400;
+	font-style: normal;
+	font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+@mixin font-medium-italic() {
+	font-weight: 400;
+	font-style: normal;
+	font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+.alternative-font-family{
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+
+// Links
+$link-color                  :$color-gray-20;
+$link-color-hover            :lighten($color-gray-20, 20%);
+$link-color-active           :black;
+$link-color-visited          :$color-gray-20;
+
+// Easing function for layout transitions (based on IOS7)
+$motion                      :"cubic-bezier(0.190, 1.000, 0.220, 1.000)";
+
+
+// Layout
+$max-width                   :75em;
+
+// Modules
+
+// Color swatches applied
+$title-color                 :$color-gray-20;
+$bright-title-color          :$color-EOS-1;
+
+$selection-bg                :$color-EOS-1;
+$selection-color             :#FFFFFF;
+$heighlight                  :$color-EOS-2;
+
+
+
+// Table
+$table-color                 :$color-gray-50;
+
+
+// Overlay
+$overlay-bg                  :rgba(0,0,0,0.85);
+$overlay-color               :#FFFFFF;
+
+
+// Tabs
+$tabs-bg                     :#F6F5F5;
+$tabs-color                  :$title-color;
+$tabs-color-hover            :black;
+$tabs-color-active           :$color-EOS-1;
+
+
+// Blockquote
+$blockquote-color            :$color-gray-10;
+$blockquote-hilight          :$color-EOS-1;
+
+
+// Loader
+$loader-color                :$color-EOS-1;
+$loader-diamiter             :6em;
+$loader-width                :0.75em;
+$loader-small-diamiter       :3em;
+$loader-samll-width          :0.25em;
+
+// Forms
+$fieldset-border             :$color-gray-60;
+$fieldset-title-color        :$title-color;
+$fieldset-subtitle-color     :$color-gray-40;
+$input-border                :2px solid $color-gray-60;
+$input-bg                    :white;
+$placeholder                 :$color-gray-50;
+$placeholder-focus           :transparent; 
+$checkbox-bg                 :white;
+$checkbox-select-bg          :#e9fcd8;
+$checkbox-select-color       :$color-EURO-1;
+
+
+// Buttons
+// Button: Default - Gray
+$button-color                :$color-EOS-9;
+$button-bg                   :#ECECEC;
+$button-bg-hover             :$color-gray-70;
+$button-bg-active            :$color-gray-60;
+// Button: 1 Primary - orange
+$button-1-color              :$color-white;
+$button-1-bg                 :$color-EURO-3;
+$button-1-bg-hover           :lighten($button-1-bg, 10%);
+$button-1-bg-active          :darken($button-1-bg, 10%);
+// Button 2: Secondary - transparent and red border/text
+$button-2-color              :$color-EURO-4;
+$button-2-bg                 :$color-gray-80;
+$button-2-bg-hover           :lighten($button-2-color, 10%);
+$button-2-bg-active          :lighten($button-2-color, 10%);
+// Button 3: Terciary - transparent
+$button-3-color              :$color-gray-30;
+$button-3-color-hover        :lighten($color-gray-30, 10%);
+$button-3-bg                 :#ADE5F2;
+$button-3-bg-hover           :lighten($button-3-bg, 5%);
+$button-3-bg-active          :darken($button-3-bg, 10%);
+// Button 4: quaternary - grey/Blue
+$button-4-color              :$color-white;
+$button-4-color-hover        :$color-white;
+$button-4-bg                 :$color-gray-60;
+$button-4-bg-hover           :lighten($button-4-bg, 5%);
+$button-4-bg-active          :$color-EURO-5;
+// Button 5: quinary - Blue
+$button-5-color              :$color-white;
+$button-5-color-hover        :$color-white;
+$button-5-bg                 :$color-EURO-5;
+$button-5-bg-hover           :lighten($button-5-bg, 5%);
+// Button - Action Green
+$button-action-color         :#FFFFFF;
+$button-action-bg            :$valid;
+$button-action-bg-hover      :$valid-dark;
+$button-action-bg-active     :$color-gray-10;
+// Button - Danger Red
+$button-danger-color         :#FFFFFF;
+$button-danger-bg            :$error;
+$button-danger-bg-hover      :$error-dark;
+$button-danger-bg-active     :$color-gray-10;
+// Button Disabled - Light Gray
+$button-disabled-color       :$color-gray-40;
+$button-disabled-bg          :$color-gray-60;
+// Button clear X - Danger Red
+$button-clear                :$error;
+$button-clear-hover          :$error-dark;
+// Text anchor - Success
+$button-text-success         :$valid;
+$button-text-success-hover   :$valid-dark;
+// Text anchor - Info
+$button-text-info            :$information;
+$button-text-info-hover      :$information-dark;
+// Text anchor - Warning
+$button-text-warning         :$error;
+$button-text-warning-hover   :$error-dark;
+
+
+// Z-Indexes
+//$z-overlay              :40;
+
+
+// Breakpoints
+// Media querdies are set up Mobile first
+// Estimates in px based on body font of 16px
+$bp-small                    :24em;     // ~384px
+$bp-small-2                  :29.75em;  // ~476px
+$bp-small-3                  :39.5em;   // ~632px
+$bp-medium                   :46.75em;  // ~748px
+$bp-med-2                    :48em;     // ~768px
+$bp-large                    :56.25em;  // ~900px
+$bp-large-2                  :66em;     // ~1056px
+$bp-x-large                  :73em;     // ~1168px
+$bp-xxl                      :89em;     // ~1424px
+$bp-xxxl                     :93em;     // ~1488px
+
+
+//
+$bp-custom: 61.063em;
+$bp-custom-2: 53.875em;

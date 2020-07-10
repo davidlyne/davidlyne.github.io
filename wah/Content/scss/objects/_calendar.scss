@@ -1,0 +1,776 @@
+
+//------------------------------------
+//  TABLE CLIENTS
+//------------------------------------
+
+//classes to hide/show the calendar
+.scroll-header__calendar{
+//####################
+// styling the scrollbar
+	::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+
+	::-webkit-scrollbar-track {	background-color: $color-gray-70;}
+
+	::-webkit-scrollbar-thumb {	background-color: $color-EURO-1;}
+
+	::-webkit-scrollbar-thumb:hover {background-color: lighten($color-EURO-1, 5%);}
+
+	max-height: 0;
+	overflow: hidden;
+	@include transition(max-height	0.4s ease);
+
+	&.is-open{
+		max-height: 200em;
+		@include transition(all	.8s ease);
+	}
+	.calendar__header{
+		padding: 0.5em 0;
+		&-selector{
+			margin-left: 1em;
+			&_value{
+				padding: 0.5em;
+			}
+		}
+	}
+}
+
+$cell-width: 40px;
+$cell-height: $cell-width;
+$cell-border: 2px;
+$cell-width-head: $cell-width * 2.25;
+
+$cell-width-weekly: $cell-width * 4.5;
+$cell-width-head-weekly: $cell-width-head;
+
+.scrollable-table{
+	overflow-x:scroll;
+	overflow-y:visible;
+
+	&-wrapper{
+		position:relative;
+		margin-bottom:2em;
+	}
+	.table{
+		width: 100%;
+		.group-row{
+			background-color: $color-gray-70;
+			z-index:2;
+		}
+		.selection_group{
+
+			.group-content{
+				z-index: 1;
+				height:0;
+				opacity: 0;
+				overflow: hidden;
+				display:none;
+
+				@include transition(height		.3s linear);
+				@include transition(transform	.4s linear);
+				@include transition(opacity		.5s linear);
+			}
+			.fa{
+				margin-left: 0.5em;
+				@include transition(all .3s linear);
+			}
+		}
+		.selection_group.is-selected{
+			.group-content{
+				height:auto;
+				opacity: 1;
+				overflow:initial;
+				display: block;
+				
+				@include transition(height		.3s linear);
+				@include transition(transform	.4s linear);
+				@include transition(opacity		.5s linear);
+			}
+			.group-name{
+				background-color: $color-EURO-2;
+				.group-selection{
+					color: $color-white;
+				}
+			}
+			.fa{
+				transform: rotate(90deg);
+				@include transition(all .3s linear);
+			}
+		}
+		.group-name{
+			height: $cell-height * 0.65;
+			padding-left: 1em;
+			text-align: left;
+			background-color: $color-gray-70;
+			p{
+				position:absolute;
+			}
+		}
+
+		.row{
+			width: $cell-width * 38.6;
+			border-bottom:$cell-border solid $color-EURO-background;
+			.cell{
+				display:table-cell;
+				float:left;
+				font-size: 0.8em;
+				border-right:$cell-border solid $color-gray-70;
+				min-width: $cell-width;
+				min-height: $cell-height;
+				max-width: $cell-width;
+				height: $cell-height;
+				vertical-align:middle;
+				
+				cursor: move; /* fallback if grab cursor is unsupported */
+				cursor: grab;
+				cursor: -moz-grab;
+				cursor: -webkit-grab;
+				// apply close hand during drag operation
+				&:active{
+					cursor: grabbing;
+					cursor: -moz-grabbing;
+					cursor: -webkit-grabbing;
+				}
+				
+				&:nth-child(1), &:nth-child(2), &:nth-child(3){
+					position: absolute;
+					text-align: left;
+					z-index: 2;
+					background-color: white;
+					min-width:$cell-width-head;
+					width:$cell-width-head;
+					border-right:0;
+					.inner-cell{
+						width: 100%;
+						height: 100%;
+						border-right: 2px solid $color-white;
+						background-color:$color-gray-70;
+						&.low{background-color:$color-priority-low;}
+						&.medium{background-color:$color-priority-medium;}
+						&.high{background-color:$color-priority-high;}
+						
+					}
+				}
+
+				&:nth-child(2){
+					margin-left: $cell-width-head;// + ($cell-border * 1);
+				}
+				&:nth-child(3){
+					margin-left: ($cell-width-head * 2) ;//+ ($cell-border * 2);
+				}
+				&:nth-child(4), &:nth-child(5)
+				{
+					min-width:$cell-width-head + ($cell-border * 2);
+					width:$cell-width-head + ($cell-border * 2);
+				}
+				.inner-cell{
+					margin:0;
+					float:left;
+					overflow: hidden;
+					p{
+						margin:0;
+						padding: 0.6em 0 0 0.5em;
+					}
+				}
+				&.is-weekend{	background-color: $color-cal-weekend;}
+				.is-planned{	background-color: $color-cal-planned;}
+				.is-accepted{	background-color: $color-cal-accepted; color: $color-white;}
+				.is-weekend{	background-color: $color-cal-weekend_2;}
+				.is-admin{		background-color: $color-cal-admin;}
+				.is-holiday{	background-color: $color-cal-holiday; color: $color-white;}
+				.is-suggested{	
+					background-color: transparent; 
+					.text{
+						height: 80% !important;
+						color: $color-EURO-2; 
+						border: 4px solid $color-cal-suggested;
+						border-radius: 0.5em;
+						padding: 0 0.4em;
+						text-transform: capitalize;
+					}
+				}
+
+				&.day-half{
+					.inner-cell{	width: 50%; height:100%;}
+					&.has-clash{
+						.inner-cell{height:50%;}
+					}
+				}
+				&.day-whole{
+					.inner-cell{	width: 100%; height:100%;}
+					&.has-clash{
+						.inner-cell{height:50%;}
+					}
+				}
+
+				&.is-multiple{
+					position:relative;
+					.inner-cell{
+						overflow:hidden;
+						height: $cell-height;
+					}
+					&.day-half{
+						.inner-cell{
+							margin-left:50%;
+						}
+					}
+					&.has-clash{
+						.inner-cell{height: 50%;}
+					}
+					&.days-2	{.inner-cell{ width: $cell-width * 2	+ ($cell-border * 2);}}
+					&.days-2h	{.inner-cell{ width: $cell-width * 2.5+ ($cell-border * 2);}}
+					&.days-3	{.inner-cell{ width: $cell-width * 3	+ ($cell-border * 2);}}
+					&.days-3h	{.inner-cell{ width: $cell-width * 3.5+ ($cell-border * 3);}}
+					&.days-4	{.inner-cell{ width: $cell-width * 4	+ ($cell-border * 3);}}
+					&.days-4h	{.inner-cell{ width: $cell-width * 4.5+ ($cell-border * 4);}}
+					&.days-5	{.inner-cell{ width: $cell-width * 5	+ ($cell-border * 4);}}
+					&.days-5h	{.inner-cell{ width: $cell-width * 5.5+ ($cell-border * 5);}}
+					&.days-6	{.inner-cell{ width: $cell-width * 6	+ ($cell-border * 5);}}
+					&.days-6h	{.inner-cell{ width: $cell-width * 6.5+ ($cell-border * 6);}}
+					&.days-7	{.inner-cell{ width: $cell-width * 7	+ ($cell-border * 6);}}
+					&.days-7h	{.inner-cell{ width: $cell-width * 7.5+ ($cell-border * 7);}}
+				}
+
+			}
+			&.head{
+				background-color:white;
+				z-index:4;
+				.cell{
+					&:nth-child(1), &:nth-child(2), &:nth-child(3){
+						background-color:$color-white;
+						//color: $color-white;
+						//p{ margin: 0.8em 0.7em;}
+						.inner-cell{ background-color:$color-gray-70;}
+					}
+					border-top: $cell-border solid $color-gray-70;
+					.inner-cell{
+						margin:0;
+						float:none;
+					}
+				}
+			}
+			&.is-selected{
+				.cell{background-color: $color-cal-row-selected;
+					&:nth-child(1), &:nth-child(2), &:nth-child(3){
+						background-color: $color-gray-70;
+						color: $color-white;
+					}
+					&.is-weekend{background-color: $color-cal-weekend;}
+				}
+			}
+		}
+	}
+	&.is-weekly{
+		.row{
+			width: $cell-width-weekly * 9.13;
+			.cell{
+				min-width: $cell-width-weekly;
+				max-width: $cell-width-weekly;
+				&:nth-child(1), &:nth-child(2), &:nth-child(3){
+					min-width:$cell-width-head-weekly;
+					width:$cell-width-head-weekly;
+					z-index:3;
+					
+					font-weight: bold;
+					background-color: $color-white;
+					padding-right: 2px;
+				}
+				&:nth-child(3){
+					min-width: $cell-width-weekly;
+					max-width: $cell-width-weekly;
+				}
+
+				&:nth-child(2){
+					margin-left: $cell-width-head-weekly + ($cell-border * 1);
+				}
+				&:nth-child(3){
+					margin-left: ($cell-width-head-weekly * 2) + ($cell-border * 2);
+				}
+				&:nth-child(4), &:nth-child(5){
+					min-width:$cell-width-head-weekly +($cell-border * 0.5);
+					width:$cell-width-head-weekly +($cell-border * 0.5);
+				}
+			}
+
+
+			//######################################################
+			// new version of calendar events
+			.cell-d{
+				position:relative;
+				&.has-clash{
+					.event-d{ 
+						height: 50%; 
+						&.second-line{ top: 50%;}
+						.text{
+							p{
+								padding: 0.2em 0;
+							}
+						}
+					}
+				}
+				.event-d{
+					position: absolute;
+					z-index:2;
+					height:100%;
+					.text{ 
+						height:100%; 
+						p{ 
+							line-height: 1;
+							margin:0;
+							text-align: center;
+							padding: 0.5em 0;
+						}
+					}
+					border-radius: 0.25em;
+					&.starts-w{
+						border-radius: 0.25em 0 0 0.25em;
+						border-right: 3px dotted $color-white;
+					}
+					&.ends-w{
+						border-radius: 0 0.25em 0.25em 0;
+						border-left: 3px dotted $color-white;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+//testing the drag and drop, changing structure
+.scrollable-table{
+	overflow-y: hidden;
+	.table{
+		.group-name{
+			.inner-cellD{
+				position:absolute;
+			}
+		}
+		.row{
+			.cellD{
+				display:table-cell;
+				float:left;
+				font-size: 0.8em;
+				border-right:$cell-border solid $color-border-1;
+				min-width: $cell-width;
+				min-height: $cell-height;
+				max-width: $cell-width;
+				height: $cell-height;
+				vertical-align:middle;
+				cursor: move; /* fallback if grab cursor is unsupported */
+				cursor: grab;
+				cursor: -moz-grab;
+				cursor: -webkit-grab;c
+				//close hand during drag operation
+				&:active{
+					cursor: grabbing;
+					cursor: -moz-grabbing;
+					cursor: -webkit-grabbing;
+				}
+				.inner-cellD{
+					margin:0;
+					float:left;
+					overflow: hidden;
+					width:100%;
+					height: 100%;
+
+					.morning{	float:left;	 max-height: $cell-height * 1; max-width:$cell-width * 0.5; overflow:hidden;}
+					.afternoon{ float:right; max-height: $cell-height * 1; max-width:$cell-width * 0.5; overflow:hidden;}
+
+					.afternoon{
+						.multiple-day{
+							margin-left: $cell-width * 0.5;
+						}
+					}
+
+					.event{
+						float:left;
+						text-align:left;
+						height:100%;
+						overflow:hidden;
+						&.half-day{		 height:$cell-height * 1; width:$cell-width * 0.5;
+							&.has-clash{ height:$cell-height * 0.5; width: $cell-width * 1}}
+						&.full-day{ width:$cell-width * 1;
+							&.has-clash{height:$cell-height * 0.5;}}
+						&.multiple-day{
+							position:absolute;
+							height: $cell-height * 1;
+							&.days-2	{ width: $cell-width * 2	+ ($cell-border * 2);}
+							&.days-2h	{ width: $cell-width * 2.5+ ($cell-border * 2);}
+							&.days-3	{ width: $cell-width * 3	+ ($cell-border * 2);}
+							&.days-3h	{ width: $cell-width * 3.5+ ($cell-border * 3);}
+							&.days-4	{ width: $cell-width * 4	+ ($cell-border * 3);}
+							&.days-4h	{ width: $cell-width * 4.5+ ($cell-border * 4);}
+							&.days-5	{ width: $cell-width * 5	+ ($cell-border * 4);}
+							&.days-5h	{ width: $cell-width * 5.5+ ($cell-border * 5);}
+							&.days-6	{ width: $cell-width * 6	+ ($cell-border * 5);}
+							&.days-6h	{ width: $cell-width * 6.5+ ($cell-border * 6);}
+							&.days-7	{ width: $cell-width * 7	+ ($cell-border * 6);}
+							&.days-7h	{ width: $cell-width * 7.5+ ($cell-border * 7);}
+							&.has-clash{height: $cell-height * 0.5;}}
+
+						&.is-planned{	background-color: $color-cal-planned;}
+						&.is-accepted{	background-color: $color-cal-accepted; color: $color-white;}
+						&.is-weekend{	background-color: $color-cal-weekend_2;}
+						&.is-admin{		background-color: $color-cal-admin;}
+						&.is-holiday{	background-color: $color-cal-holiday; color: $color-white;}
+					}
+				}
+				&.is-weekend{	background-color: $color-cal-weekend;}
+
+				&.is-multiple{
+					position:relative;
+					.inner-cellD{
+						overflow:hidden;
+						height: $cell-height;
+					}
+					&.day-half{
+						.inner-cellD{
+							margin-left:50%;
+						}
+					}
+					&.has-clash{
+						.inner-cellD{height: 50%;}
+					}
+					&.days-2	{.inner-cellD{ width: $cell-width * 2	+ ($cell-border * 2);}}
+					&.days-2h	{.inner-cellD{ width: $cell-width * 2.5+ ($cell-border * 2);}}
+					&.days-3	{.inner-cellD{ width: $cell-width * 3	+ ($cell-border * 2);}}
+					&.days-3h	{.inner-cellD{ width: $cell-width * 3.5+ ($cell-border * 3);}}
+					&.days-4	{.inner-cellD{ width: $cell-width * 4	+ ($cell-border * 3);}}
+					&.days-4h	{.inner-cellD{ width: $cell-width * 4.5+ ($cell-border * 4);}}
+					&.days-5	{.inner-cellD{ width: $cell-width * 5	+ ($cell-border * 4);}}
+					&.days-5h	{.inner-cellD{ width: $cell-width * 5.5+ ($cell-border * 5);}}
+					&.days-6	{.inner-cellD{ width: $cell-width * 6	+ ($cell-border * 5);}}
+					&.days-6h	{.inner-cellD{ width: $cell-width * 6.5+ ($cell-border * 6);}}
+					&.days-7	{.inner-cellD{ width: $cell-width * 7	+ ($cell-border * 6);}}
+					&.days-7h	{.inner-cellD{ width: $cell-width * 7.5+ ($cell-border * 7);}}
+				}
+			}
+		}
+	}
+}
+
+
+
+$eng-cell-width: 134px;//14%;//134px;
+$eng-cell-body-head-height: 30px;
+$eng-cell-body-content-height: $eng-cell-body-head-height * 2.5;
+$eng-cell-head: $eng-cell-body-head-height * 1.65;
+$eng-cell-border-p: 1px;//0.2%;
+$eng-cell-border: 1px;
+
+$size-1     :convert-length( 991px,  em);//OLD:66em;     // ~1056px
+$size-2     :convert-length( 1103px, em);//OLD:73em;     // ~1168px
+$size-3     :convert-length( 1200px, em);//OLD:89em;     // ~1424px
+$size-4     :convert-length( 1200px, em);//OLD:93em;     // ~1488px
+
+
+@function get-width($wrapper) {
+	$temp: convert-length($wrapper, px);
+	@return ($temp / 7) - 2;
+}
+
+.calendar-engineer{
+	padding-top: 1em;
+	padding-bottom:1em;
+	&__wrapper{
+		padding-top: 1em;
+		margin: auto;
+		//convert-length($length, $to-unit, $from-context: $base-font-size, $to-context: $from-context)
+		width: convert-length(64em, px);
+		@include mq($bp-large-2){	width: $size-1;}
+		@include mq($bp-x-large){	width: $size-2;}
+		@include mq($bp-xxl){		width: $size-3;}
+		@include mq($bp-xxxl){		width: $size-4;}
+	}
+
+	&__header{
+		.calendar__header{
+			&-selector{
+				padding-left: 0;
+				&_value{
+					padding: 0 0.5em;
+				}
+			}
+			&-inner{
+				.right{
+					padding-right: 0.8em;
+				}
+				color: $color-white;
+				.fa{
+					color: $color-white;
+				}
+			}	
+		}
+	}
+	&__head{
+		//border-top: 1px solid $color-border-1;
+		&-item{
+			float:left;
+			width: $eng-cell-width;
+			@include mq($bp-large-2){	width: get-width($size-1);}
+			@include mq($bp-x-large){	width: get-width($size-2);}
+			@include mq($bp-xxl){		width: get-width($size-3);}
+			@include mq($bp-xxxl){		width: get-width($size-4);}
+
+			height: $eng-cell-head;
+			text-align: center;
+			color: $color-text-2;
+			background-color: $color-white;
+			margin-bottom: -$eng-cell-border;
+			font-size: 0.8em;
+
+			p{
+				margin: 1em 0 0 0;
+			}
+
+			border-top: $eng-cell-border solid $color-border-1;
+			border-right: $eng-cell-border solid $color-border-1;
+			border-bottom: $eng-cell-border solid $color-border-1;
+
+			&:first-child{
+				border-left: $eng-cell-border solid $color-border-1;  
+			}
+		}
+	}
+	&__body{
+		&-item{
+			float:left;
+			width: $eng-cell-width;
+			@include mq($bp-large-2){	width: get-width($size-1);}
+			@include mq($bp-x-large){	width: get-width($size-2);}
+			@include mq($bp-xxl){		width: get-width($size-3);}
+			@include mq($bp-xxxl){		width: get-width($size-4);}
+
+			border-right: $eng-cell-border solid $color-border-1;
+			border-top: $eng-cell-border solid $color-border-1;
+			border-bottom: $eng-cell-border solid $color-border-1;
+			margin-bottom: -$eng-cell-border;
+			background-color: $color-white;
+			&-head{
+				height: $eng-cell-body-head-height;
+				border-bottom: $eng-cell-border solid $color-border-1;
+
+				padding: 0 0.5em;
+				padding-top:0.25em;
+				font-size: 0.8em;
+
+				p{
+					margin: 0;
+				}
+
+				.num{
+					text-align:right;
+				}
+				.label{
+					text-align:left;
+				}
+			}
+			&-content{
+				height: $eng-cell-body-content-height;
+				padding: 0;
+				//overflow:hidden; //fix FF bug
+
+				// ########################################################################
+				// this will manage event width to have more detail than just half/full day
+				position: relative;
+				.event-w{
+					position:absolute;
+					&.has-clash-w{
+						height:50%;
+					}
+					border-radius: 0.25em;
+					&.starts-w{
+						border-radius: 0.25em 0 0 0.25em;
+						border-right: 2px dotted $color-white;
+					}
+					&.ends-w{
+						border-radius: 0 0.25em 0.25em 0;
+						border-left: 2px dotted $color-white;
+					}
+				}
+
+
+				//##########################################################################
+				.event{
+					float:left;
+					text-align:left;
+					height: 100%;
+					overflow:hidden;
+					//padding:0.5em;
+					&.half-day{		 height: $eng-cell-body-content-height * 1;	width: $eng-cell-width * 0.5;
+						@include mq($bp-large-2){	width: get-width($size-1) * 0.5;}
+						@include mq($bp-x-large){	width: get-width($size-2) * 0.5;}
+						@include mq($bp-xxl){		width: get-width($size-3) * 0.5;}
+						@include mq($bp-xxxl){		width: get-width($size-4) * 0.5;}
+						&.has-clash{ height: $eng-cell-body-content-height * 0.5; width: $eng-cell-width * 1;
+							@include mq($bp-large-2){	width: get-width($size-1) * 1;}
+							@include mq($bp-x-large){	width: get-width($size-2) * 1;}
+							@include mq($bp-xxl){		width: get-width($size-3) * 1;}
+							@include mq($bp-xxxl){		width: get-width($size-4) * 1;}
+						}}
+					&.full-day{		 width: $eng-cell-width * 1;
+						@include mq($bp-large-2){	width: get-width($size-1) * 1;}
+						@include mq($bp-x-large){	width: get-width($size-2) * 1;}
+						@include mq($bp-xxl){		width: get-width($size-3) * 1;}
+						@include mq($bp-xxxl){		width: get-width($size-4) * 1;}
+						&.has-clash{ height: $eng-cell-body-content-height * 0.495; 
+							&:first-child{border-bottom: $eng-cell-border solid $color-border-1;}
+							&.line-2nd{margin-top:$eng-cell-body-content-height * 0.5;}
+						}
+					}
+
+					&.multiple-day{
+						position:absolute;
+						height: $eng-cell-body-content-height * 1;
+							//margin-top: -($cell-border * 3);
+						&.days-2	{ width: $eng-cell-width * 2	+	($eng-cell-border-p * 1);}
+						&.days-2h	{ width: $eng-cell-width * 2.5+		($eng-cell-border-p * 3);}
+						&.days-3	{ width: $eng-cell-width * 3	+	($eng-cell-border-p * 2);}
+						&.days-3h	{ width: $eng-cell-width * 3.5+		($eng-cell-border-p * 3);}
+						&.days-4	{ width: $eng-cell-width * 4	+	($eng-cell-border-p * 3);}
+						&.days-4h	{ width: $eng-cell-width * 4.5+		($eng-cell-border-p * 4);}
+						&.days-5	{ width: $eng-cell-width * 5	+	($eng-cell-border-p * 4);}
+						&.days-5h	{ width: $eng-cell-width * 5.5+		($eng-cell-border-p * 5);}
+						&.days-6	{ width: $eng-cell-width * 6	+	($eng-cell-border-p * 5);}
+						&.days-6h	{ width: $eng-cell-width * 6.5+		($eng-cell-border-p * 6);}
+						&.days-7	{ width: $eng-cell-width * 7	+	($eng-cell-border-p * 6);}
+						&.days-7h	{ width: $eng-cell-width * 7.5+		($eng-cell-border-p * 7);}
+						&.has-clash{  height:$eng-cell-body-content-height * 0.5;
+							&.line-2nd{margin-top:$eng-cell-body-content-height * 0.5;}
+						}
+
+						//responsive width, can't find a better way to manage the responsive calendar
+						@include mq($bp-large-2){	
+							&.days-2	{ width: (get-width($size-1) * 2	 )+		($eng-cell-border-p * 1);}
+							&.days-2h	{ width: (get-width($size-1) * 2.5)+		($eng-cell-border-p * 3);}
+							&.days-3	{ width: (get-width($size-1) * 3	 )+		($eng-cell-border-p * 2);}
+							&.days-3h	{ width: (get-width($size-1) * 3.5)+		($eng-cell-border-p * 3);}
+							&.days-4	{ width: (get-width($size-1) * 4	 )+		($eng-cell-border-p * 3);}
+							&.days-4h	{ width: (get-width($size-1) * 4.5)+		($eng-cell-border-p * 4);}
+							&.days-5	{ width: (get-width($size-1) * 5	 )+		($eng-cell-border-p * 4);}
+							&.days-5h	{ width: (get-width($size-1) * 5.5)+		($eng-cell-border-p * 5);}
+							&.days-6	{ width: (get-width($size-1) * 6	 )+		($eng-cell-border-p * 5);}
+							&.days-6h	{ width: (get-width($size-1) * 6.5)+		($eng-cell-border-p * 6);}
+							&.days-7	{ width: (get-width($size-1) * 7	 )+		($eng-cell-border-p * 6);}
+						}
+						@include mq($bp-x-large){	
+							&.days-2	{ width: get-width($size-2) * 2	+		($eng-cell-border-p * 1);}
+							&.days-2h	{ width: get-width($size-2) * 2.5+		($eng-cell-border-p * 3);}
+							&.days-3	{ width: get-width($size-2) * 3	+		($eng-cell-border-p * 2);}
+							&.days-3h	{ width: get-width($size-2) * 3.5+		($eng-cell-border-p * 3);}
+							&.days-4	{ width: get-width($size-2) * 4	+		($eng-cell-border-p * 3);}
+							&.days-4h	{ width: get-width($size-2) * 4.5+		($eng-cell-border-p * 4);}
+							&.days-5	{ width: get-width($size-2) * 5	+		($eng-cell-border-p * 4);}
+							&.days-5h	{ width: get-width($size-2) * 5.5+		($eng-cell-border-p * 5);}
+							&.days-6	{ width: get-width($size-2) * 6	+		($eng-cell-border-p * 5);}
+							&.days-6h	{ width: get-width($size-2) * 6.5+		($eng-cell-border-p * 6);}
+							&.days-7	{ width: get-width($size-2) * 7	+		($eng-cell-border-p * 6);}
+						}
+						@include mq($bp-xxl){		
+							&.days-2	{ width: get-width($size-3) * 2	+		($eng-cell-border-p * 1);}
+							&.days-2h	{ width: get-width($size-3) * 2.5+		($eng-cell-border-p * 3);}
+							&.days-3	{ width: get-width($size-3) * 3	+		($eng-cell-border-p * 2);}
+							&.days-3h	{ width: get-width($size-3) * 3.5+		($eng-cell-border-p * 3);}
+							&.days-4	{ width: get-width($size-3) * 4	+		($eng-cell-border-p * 3);}
+							&.days-4h	{ width: get-width($size-3) * 4.5+		($eng-cell-border-p * 4);}
+							&.days-5	{ width: get-width($size-3) * 5	+		($eng-cell-border-p * 4);}
+							&.days-5h	{ width: get-width($size-3) * 5.5+		($eng-cell-border-p * 5);}
+							&.days-6	{ width: get-width($size-3) * 6	+		($eng-cell-border-p * 5);}
+							&.days-6h	{ width: get-width($size-3) * 6.5+		($eng-cell-border-p * 6);}
+							&.days-7	{ width: get-width($size-3) * 7	+		($eng-cell-border-p * 6);}
+						}
+						@include mq($bp-xxxl){		
+							&.days-2	{ width: get-width($size-4) * 2	+		($eng-cell-border-p * 1);}
+							&.days-2h	{ width: get-width($size-4) * 2.5+			($eng-cell-border-p * 3);}
+							&.days-3	{ width: get-width($size-4) * 3	+		($eng-cell-border-p * 2);}
+							&.days-3h	{ width: get-width($size-4) * 3.5+			($eng-cell-border-p * 3);}
+							&.days-4	{ width: get-width($size-4) * 4	+		($eng-cell-border-p * 3);}
+							&.days-4h	{ width: get-width($size-4) * 4.5+			($eng-cell-border-p * 4);}
+							&.days-5	{ width: get-width($size-4) * 5	+		($eng-cell-border-p * 4);}
+							&.days-5h	{ width: get-width($size-4) * 5.5+			($eng-cell-border-p * 5);}
+							&.days-6	{ width: get-width($size-4) * 6	+		($eng-cell-border-p * 5);}
+							&.days-6h	{ width: get-width($size-4) * 6.5+			($eng-cell-border-p * 6);}
+							&.days-7	{ width: get-width($size-4) * 7	+		($eng-cell-border-p * 6);}
+						}
+					}
+
+					&.is-planned{	background-color: $color-cal-planned;}
+					&.is-accepted{	background-color: $color-cal-accepted; color: $color-white;}
+					&.is-weekend{	background-color: $color-cal-weekend_2;}
+					&.is-admin{		background-color: $color-cal-admin;}
+					&.is-holiday{	background-color: $color-cal-holiday; color: $color-white;}
+				
+
+					.text{
+						padding-top: 0.6em;
+						padding-left: 0.5em;
+						height: 100%;
+						p{
+							margin: 0;
+							font-size: 0.8em;
+						}
+					}
+				}
+				.morning{	float:left;	 max-height: $eng-cell-body-content-height * 1; max-width: $eng-cell-width * 0.5; overflow:hidden;
+					@include mq($bp-large-2){	max-width: get-width($size-1) * 0.5;}
+					@include mq($bp-x-large){	max-width: get-width($size-2) * 0.5;}
+					@include mq($bp-xxl){		max-width: get-width($size-3) * 0.5;}
+					@include mq($bp-xxxl){		max-width: get-width($size-4) * 0.5;}
+				}
+				.afternoon{ float:right; max-height: $eng-cell-body-content-height * 1; max-width: $eng-cell-width * 0.5; overflow:hidden;
+					@include mq($bp-large-2){	max-width: get-width($size-1) * 0.5;}
+					@include mq($bp-x-large){	max-width: get-width($size-2) * 0.5;}
+					@include mq($bp-xxl){		max-width: get-width($size-3) * 0.5;}
+					@include mq($bp-xxxl){		max-width: get-width($size-4) * 0.5;}
+				}
+
+				.afternoon{
+					.multiple-day{
+						margin-left: -($eng-cell-width * 0.5);
+						@include mq($bp-large-2){	margin-left: -(get-width($size-1) * 0.5);}
+						@include mq($bp-x-large){	margin-left: -(get-width($size-2) * 0.5);}
+						@include mq($bp-xxl){		margin-left: -(get-width($size-3) * 0.5);}
+						@include mq($bp-xxxl){		margin-left: -(get-width($size-4) * 0.5);}
+					}
+				}
+			}
+			&:first-child, &.day-first{
+				border-left: $eng-cell-border solid $color-border-1;
+			}
+			&.day-empty{
+				border-right:0;
+				border-top: $eng-cell-border solid $color-border-1;
+				border-bottom: $eng-cell-border solid transparent;
+				height: $eng-cell-body-head-height + $eng-cell-body-content-height;// + ($eng-cell-border * 3);
+			}
+
+			&.has-clash{
+				.calendar-engineer__body-item-head{
+					.label:after{
+						text-align:right;
+						font: normal normal normal #{$fa-font-size-base}/1 FontAwesome;
+						font-size: 0.89em;
+						content: "\f071  double booking!";
+					}
+				}
+			}
+			&.today{
+				.calendar-engineer__body-item-head{
+					.num{
+						border-radius: 50%;
+						width: 1.5em;
+						height: 1.5em;
+						text-align: center;
+						background-color: $color-gray-10;
+						color: $color-gray-80;
+					}
+				}
+			}
+			&.is-weekend{	.calendar-engineer__body-item-content{background-color: $color-cal-weekend;}}
+		}
+	}
+}

@@ -1,0 +1,214 @@
+
+//------------------------------------
+//  SIDEBAR
+//------------------------------------
+
+
+.sidebar{
+	//border: 1px solid $color-gray-20;
+	background-color: $color-white;
+	width: 100%; //16em;
+
+	//######## Animations
+	&__anim{
+		&-wrapper{
+			.sidebar__anim-content{
+				max-width: 100%;
+				@include transition(all	0.5s ease);
+			}
+			.sidebar__anim-side{
+				max-width: 0;
+				overflow: hidden;
+				@include transition(all	0.5s ease);
+
+				&-inner{
+					min-width:15em;
+					@include mq($bp-large-2){	min-width:14em;}
+					@include mq($bp-x-large){	min-width:18em;}
+				}
+			}
+
+			&.is-active{
+				.sidebar__anim-content{
+					max-width: 74%;
+					@include transition(all	0.5s ease);
+				}
+				.sidebar__anim-side{
+					border: 1px solid $color-gray-70;
+					max-width: 25%;
+					@include transition(all	0.5s ease);
+				}
+			}
+		}
+	}
+
+	&__wrapper{
+		background-color: $color-white;
+		//border: 1px solid $color-gray-70;
+	}
+
+	&__title{
+		padding: 1em;
+		&-title{
+			margin: 0;
+			font-size: 1.09em;
+		}
+		&-label{
+			padding: 0.2em 0.6em;
+			&.is-overdue{  background-color: $color-status-overdue;}
+			&.is-planned{  background-color: $color-status-planned;}
+			&.is-accepted{ background-color: $color-status-accepted;}
+			&.is-rejected{ background-color: $color-status-rejected;}
+		}
+	}
+	&__content{
+		padding: 0.5em 1em 0 1em;
+		h4{
+			padding-bottom: 0;
+			margin-bottom: 0;
+		}
+
+		&-list{
+			&-label{
+				font-weight: bold;
+				width: 10em;
+			}
+		}
+
+		&-section{
+			font-size: 0.85em;
+			color: $color-EURO-2;
+			padding-bottom: 1.5em;
+			p{margin:0;}
+			&-title{font-weight: bold;}
+		}
+
+		&-table{
+			display:table;
+			margin-top: 0.325em;
+			font-size: 0.925em;
+			&-row{
+				display:table-row;
+				&.head{
+					font-style: italic;
+				}
+			}
+			&-cell{
+				display: table-cell;
+				width: 20%;
+			}
+
+		}
+	}
+
+	&__buttons{
+		padding:0 0 1em 0;
+	}
+
+	&__footer{
+		padding: 0 1em 1em 1em;
+		text-align:right;
+		color: $color-text-2;
+	}
+
+	&__tab-buttons{
+		text-align:center;
+		a:link, a:visited{
+			border: 1px solid $color-gray-50;
+			width: 49.0%;
+			padding: 0.3em 0;
+			background-color: #FFF;
+			float:left;
+			&.is-selected{
+				background-color: $color-selected
+			}
+		}
+		a:hover{
+			background-color: $color-EOS-5 !important;
+			color:#FFF;
+		}
+		
+	}
+
+	&__send_event{
+		&-list{
+			&-item{
+				padding-bottom: 0.75em;
+				&-sublabel{
+					font-size: 0.75em;
+					padding-left: 2.5em;
+				}
+			}
+		}
+	}
+
+
+
+	&__event{
+		&-type{
+			.btn{
+				margin-right: 0.5em;
+				margin-bottom: 0.5em;
+			}
+			padding-bottom: 0.5em;
+		}
+		&-search{
+			margin-bottom: 1em;
+			input{
+				width: 92%;
+				padding: 0.25em;
+				border: 1px solid $color-gray-70;
+			}
+		}
+
+		&-info{
+			.dialog-datepicker__pickers{
+				font-size: 0.9em;
+				.datepicker__small-date{
+					width: 40%;
+				}
+				.datepicker__small-time{
+					-webkit-appearance: none;
+					-moz-appearance: none;
+					appearance: none;
+				}
+				.datepicker-label{
+					width: 18%;
+					padding-top: 0.15em;
+				}
+				.datepicker-wrapper{
+					margin-bottom: 0.5em;
+				}
+			}
+		}
+
+		&-all-day-wrapper{
+			padding-top: 0.25em;
+			.tri-state-label{
+				margin-left: 18%;
+			}
+		}
+
+		&-suggested{
+			&-message{
+				margin-top: 0.5em;
+
+				&-title{
+					font-size: 0.9em;
+				}
+				&-textarea{
+					width:95%;
+					padding: 0.2em 0.3em; 
+					margin-top: 0.3em;
+					font-size: 0.9em;
+				}
+			}
+			&-savebtn{
+				padding-top:0.5em;
+			}
+			&-messages-wrapper{
+				padding-top:0.5em;
+			}
+		}
+	}
+}

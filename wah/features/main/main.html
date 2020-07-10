@@ -1,0 +1,32 @@
+<div id="fourByThreeFrame">    
+    <div id="mainContent">
+        
+        <ciob-Static-View data-ng-show="mainVm.videoMode === false" section = "mainVm.currentSection" controller = "mainVm"></ciob-Static-View>
+
+        <video id="videoPlayer" preload="auto" data-ng-click="mainVm.teleport()" playsinline>
+            <source src="{{mainVm.sections[0].mediaPath + 'video.mp4'}}" type="video/mp4">
+        </video>
+    </div>
+    <!--<div id="leftStripUI" data-ng-mousedown="mainVm.mouseDown()" data-ng-mouseleave="mainVm.mouseLeave()" data-ng-mouseup="mainVm.mouseUp()">
+        <img id="logoImg" src="Content/img/CIOB_logo.png" alt="CIOB" />
+        <ul id="numberButtons">
+            <li data-ng-repeat="section in mainVm.sections" id="button{{section.stepNumber}}">
+                <div class="button{{section.stepNumber === mainVm.currentSection.stepNumber ? ' active' : ''}}" data-ng-click="mainVm.fadeToSection(section)" ng-mouseenter="mainVm.buttonHover(section)" ng-mouseleave="mainVm.buttonHover(null)">
+                    <div class="number">{{section.stepNumber}}</div>
+                </div>
+            </li>
+        </ul>
+
+    </div>-->
+    
+    <div id="skipButton" data-ng-click="mainVm.skipVideo()" data-ng-if="mainVm.videoMode === true && mainVm.currentSection.enableVideoSkip">
+        <span>Skip Video</span>
+    </div>
+
+<div id="errorOverlay" data-ng-show="mainVm.errorMessage.length > 0"><span><font color='white'>{{mainVm.errorMessage}}</font></span>
+<div id="exitButton" data-ng-click="mainVm.Quit()">
+    <span>Exit</span>
+</div>   
+
+</div>
+<div id="overlay" data-ng-show="mainVm.overlayFade > 0.0"></div>

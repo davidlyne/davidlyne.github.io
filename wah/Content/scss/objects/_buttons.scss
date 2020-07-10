@@ -1,0 +1,517 @@
+
+//------------------------------------
+//  BUTTONS
+//------------------------------------
+
+
+// Default button (green)
+
+.btn {
+	@include border-radius();
+	@include transition (color 0.25s #{$motion}, background 0.25s #{$motion});
+	@include font-regular();
+	@include rem (font-size, 0.85em);
+	line-height: 1;
+	text-align: center;
+	text-decoration: none;
+	color: $button-color;
+	background: $button-bg;
+	display: inline-block;
+	padding: .5em 0.75em;
+	border: 0;
+	cursor: pointer;
+	white-space: normal;
+	-webkit-appearance: none;
+	text-transform: capitalize;
+
+	.fa{
+		margin-right: 0.5em;
+	}
+
+	&:visited,
+	&:link {
+		color: $button-color;
+	}
+
+	&:hover, &:focus {
+		background: $button-bg-hover;
+		color: $button-color;
+		text-decoration: none;
+	}
+
+	&:active {
+		background: $button-bg-active;
+	}
+
+	&.truncate {
+		white-space: nowrap;
+	}
+
+
+
+	// Primary Button
+	&.btn-primary {
+		background: $button-1-bg;
+		color: $button-1-color;
+
+		&:hover, &:focus {
+			background: $button-1-bg-hover;
+			color: $button-1-color;
+			text-decoration: none;
+		}
+
+		&:focus {
+			outline: 1px dotted $title-color;
+		}
+
+		&:active {
+			background: $button-1-bg-active;
+		}
+	}
+
+
+
+	// Secondary Button
+	&.btn-secondary {
+		background: transparent;
+		color: $button-2-color;
+		border: 1px solid $button-2-color;
+
+		&:hover, &:focus {
+			color: $button-2-bg-hover;
+			border-color: $button-2-bg-hover;
+			text-decoration: none;
+		}
+		
+		&:active {
+			color: $button-2-bg-active;
+			border-color: $button-2-bg-active;
+		}
+	}
+
+
+
+	// Terciary Button
+	&.btn-tertiary {
+		background: transparent;
+		color: $button-3-color;
+
+		&:hover, &:focus {
+			//background: $button-3-bg-hover;
+			color: $button-3-color-hover;
+			text-decoration: none;
+		}
+
+		&:active {
+			background: $button-3-bg-active;
+		}
+	}
+
+	// Quaternary button
+	&.btn-quaternary {
+		background: $button-4-bg;
+		color: $button-4-color;
+
+		&:hover, &:focus {
+			background: $button-4-bg-hover;
+			color: $button-4-color;
+			text-decoration: none;
+		}
+
+		&:focus {
+			outline: 1px dotted $title-color;
+		}
+
+		&:active {
+			background: $button-4-bg-active;
+		}
+		&.is-active{
+			background: $button-4-bg-active;
+		}
+	}
+
+	&.btn-quinary {
+		background: $button-5-bg;
+		color: $button-5-color;
+
+		&:hover, &:focus {
+			background: $button-5-bg-hover;
+			color: $button-5-color;
+			text-decoration: none;
+		}
+
+		&:focus {
+			outline: 1px dotted $title-color;
+		}
+	}
+
+	&.btn-senary {
+		background: transparent;
+		color: $button-3-color;
+
+		&:hover, &:focus {
+			//background: $button-3-bg-hover;
+			color: $button-3-color-hover;
+			text-decoration: none;
+		}
+
+		&:active {
+			background: $button-3-bg-active;
+		}
+	}
+
+	&.btn-multiple{
+		margin-right: -5px;
+		border: 1px solid $color-border-2;
+		&.is-selected{
+			background: $button-1-bg;
+			color: $button-1-color;
+		}	
+	}
+
+
+
+
+	// Select Button
+	&.is-selected {
+		background: $button-1-bg;
+		color: $button-1-color;
+
+		&:hover {
+			background: $button-1-bg;
+			color: $button-1-color;
+		}
+	}
+}
+
+
+
+
+// Text button - used to help reset styles of <button> and type="submit" elements
+.btn-text {
+	border: 0;
+	background: transparent;
+	text-decoration: underline;
+}
+
+.btn-center {
+	width:10em;
+	margin:auto;
+	margin-top:1em;
+
+	.btn {
+		padding:0.5em 1.5em;
+		font-size:1em;
+	}
+}
+
+// Action button states
+.btn-success {
+	color: $button-text-success;
+	&:hover {
+		color: $button-text-success-hover;
+	}
+}
+
+.btn-warning {
+	color: $button-text-warning;
+	&:hover {
+		color: $button-text-warning-hover;
+	}
+}
+
+// little hacky
+.btn {
+	&.btn--account:hover,
+	&.btn--account:link,
+	&.btn--account:visited,
+	&.btn--account:focus{
+		outline: 0;
+		background-color: transparent;
+		&.is-open
+		{
+			background-color: transparent;
+		}
+	}
+}
+
+
+// Disabled button (gray)
+.btn-disabled {
+	background: $button-disabled-bg;
+	color: $button-disabled-color;
+	cursor: not-allowed;
+
+	&:hover, &:focus {
+		background: $button-disabled-bg;
+		color: $button-disabled-color;
+	}
+}
+
+
+
+
+// Action button (green)
+.btn-action {
+	background: $button-action-bg;
+	color: $button-action-color;
+
+	&:hover, &:focus{
+		background: $button-action-bg-hover;
+		color: $button-action-color;
+	}
+
+	&:focus {
+		outline: 1px dotted $title-color;
+	}
+
+	&:active {
+		background: $button-action-bg-active;
+	}
+}
+
+
+
+
+// Danger button (red)
+.btn-danger {
+
+	&:link,
+	&:visited {
+		background: $button-danger-bg;
+		color: white !important; 
+		margin: 0;
+	}
+	&:hover, &:focus{
+		background: $button-danger-bg-hover;
+		color: !important; 
+	}
+
+	&:focus {
+		outline: 1px dotted $title-color;
+	}
+
+	&:active {
+		background: $button-danger-bg-active;
+	}
+}
+
+
+
+
+// Clear button (corner or input clear style)
+.btn-clear {
+	font-family: cursive;
+	font-weight: normal;
+	padding: 0.5em;
+	line-height: 1;
+	text-transform: none;
+	color: $button-clear;
+
+	&:hover {
+		color: $button-clear-hover;
+	}
+}
+
+
+
+
+// Button modifiers
+.btn-small {@include rem(font-size, 12px); padding: 0.5em; font-weight:300;}
+
+.btn-large {@include rem(font-size, 1.4rem);}
+
+.btn-full {width: 100%}
+
+.btn-right {
+	position: relative;
+	&:after {
+		@include arrow(right, 6px, currentColor, false);
+	}
+}
+
+
+
+
+
+
+// Button Set
+.btn-set {
+	@extend .clearfix;
+	margin-bottom: 1em;
+	margin-left: -0.25em;
+	margin-right: -0.25em;
+
+	.btn {
+		@include font-medium();
+		margin: 0.25em;
+
+		&:hover, &:focus{
+			text-decoration: none;
+		}
+
+		&.is-selected {
+			background: $button-1-bg;
+			color: $button-1-color;
+
+			&:hover {
+				background: $button-1-bg;
+				color: $button-1-color;
+			}
+		}
+
+		&.btn-action {
+			@extend .btn-action;
+		}
+
+	}
+
+
+
+	// Radio style grouped buttons
+	&.btn-set-grouped {
+		margin-left: 0;
+		margin-right: 0;
+
+		&.centered {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.btn {
+			@include border-radius(0px);
+			margin: 0;
+			float: left;
+		}
+
+		& .btn:first-child {
+			//@include border-radius(4px 0 0 4px);
+		}
+
+		& .btn:last-child {
+			//@include border-radius(0 4px 4px 0);
+		}
+
+		&.btn-set-fullwidth {
+			display: table;
+			width: 100%;
+
+			.btn {
+				float: none;
+				display: table-cell;
+				vertical-align: middle;
+			}
+		}
+	}
+}
+
+
+
+// Dropdown buttons
+
+.btn-dropdown {
+	//margin-bottom: 1em;
+	position: relative;
+	display: inline-block;
+
+	.btn .fa {
+		padding-left: 0.25em;
+		-webkit-transition: -webkit-transform, 0.15s, #{$motion};
+		-ms-transition: -ms-transform, 0.15s, #{$motion};
+		transition: transform, 0.15s, #{$motion};
+	}
+
+	.btn span {
+		@include font-regular ();
+		color: #6E6E6E;
+	}
+
+	.btn.is-open {
+		background: $button-bg-active;
+
+		.fa {
+			-webkit-transform: rotate(90deg);
+			-ms-transform: rotate(90deg);
+			transform: rotate(90deg);
+		}
+	}
+}
+
+
+// Dropdown panel, also used for tabd dropdown menu
+.dropdown-menu {
+	display: none;
+	position: absolute;
+	margin-top: 0.25em;
+	top: 100%;
+	right: 0;
+	z-index: 1000;
+	float: right;
+	min-width: 160px;
+	background: $button-bg;
+	padding: 0.25em 0;
+	border: 1px solid #EEE;
+	box-shadow: 0 2px 4px rgba(119, 118, 118, 0.63);
+
+	&--account // extending pauls drop down for the header account section..
+	{
+		margin-top: 0.4em;
+		right: -0.5em;
+		&:after 
+		{
+			content: "";
+			width: 0;
+			height: 0;
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;
+			border-bottom: 10px solid $button-bg;
+			top: -10px;
+			right: 23px;
+			position: absolute;
+		}
+	}
+
+	&.is-open {
+		display: block;
+	}
+
+	a {
+		padding: 0.25em 1em;
+		text-align: center;
+		display: block;
+		white-space: nowrap;
+
+		&:hover {
+			background: $button-bg-hover;
+		}
+	}
+}
+
+.btn-search{
+	font-size: 0.85em;
+	input {
+		padding: 0.3em 0.6em;
+		border: 0;
+	}
+
+	.search-icon {
+		background-color: $color-EURO-1;
+		padding: 0.3em 0.2em 0.3em 0.6em;
+		position: relative;
+		left: -4px;
+		color: $color-white;
+		.fa {width: 1.5em;}
+		&:hover {
+			background-color: lighten($color-EURO-1, 5%);;
+		}
+	}
+}
+
+.btn-datepicker{
+	input{	padding-right: 1.3em;}
+
+	.datepicker-icon{
+		position:relative;
+		left: -1.5em;
+	}
+}

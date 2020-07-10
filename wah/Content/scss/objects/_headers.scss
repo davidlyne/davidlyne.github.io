@@ -1,0 +1,101 @@
+
+//------------------------------------
+//  HEADERS
+//------------------------------------
+
+.header-client{
+	//padding-top: 2.5em;
+
+	&-name{
+		margin:0;
+	}
+
+	&__title-add{
+		font-size: 0.8em;
+		margin-left: 1em;
+	}
+	&__due-range{
+		background-color: $color-white; //$color-background-1;
+		padding: 0.1em 0.8em;
+		font-size: 0.9em;
+		text-transform: capitalize;
+		//&.is-due{background-color: $color-status-due;}
+		&.is-due{border: 1px solid $color-status-due;}
+		&.is-rejected{background-color: $color-status-rejected;}
+		&.is-accepted{background-color: $color-status-accepted;}
+		&.is-planned{background-color: $color-status-planned;}
+	}
+	&.is-fixed{
+		//position: fixed;
+		//background-color: #FFF;
+		//height: 130px;
+		//width:73.5%;
+	}
+	&__status{
+		&-item{
+			float: left;
+			padding: 0.1em 0.4em;
+			background-color: $color-background-1;
+			min-width: 4.5em;
+			text-align: center;
+			&.is-due{		background-color: $color-status-due;}
+			&.is-rejected{	background-color: $color-status-rejected;}
+			&.is-accepted{	background-color: $color-status-accepted;}
+			&.is-planned{	background-color: $color-status-planned;}
+		}
+	}
+
+	.open-calendar{
+		.fa{
+			margin-right: 0.5em;
+		}
+	}
+}
+
+.header-list{
+	.equipment-list__first_item.is-title{
+		background-color: $color-background-1;
+		font-weight: bold;
+		border-top: 1px solid transparent;
+		border-bottom: 1px solid transparent;
+		&:first-child{
+			border-left: 1px solid transparent;
+		}
+	}
+}
+
+//  fixed header classes
+
+  .fixed-header, .scroll-header{
+	//background-color: $color-EURO-background;
+  }
+  .fixed-header{
+	z-index: 99;
+  }
+  .scroll-header{
+	z-index: 88;
+  }
+
+
+// ########################################################################################
+// #######################  THIS ARE TEST CLASSES FOR FIXED HEADER ########################
+
+// this is for stackheads code
+.fixedheader{
+	background-color: $color-EURO-background;
+	z-index: 99;
+}
+
+//this is for fixto test
+//.box {
+//	height:300px; width:300px; background: red;
+//  }
+//  .child{
+//	height:50px;width:50px;background:yellow;
+//  }
+//  #list li{
+//	margin-bottom:20px;
+//  }
+//  #pinky {
+//	padding:10px;
+//  }

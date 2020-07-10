@@ -1,0 +1,130 @@
+
+//------------------------------------
+//  LAYOUT
+//------------------------------------
+
+.page{
+	background-color: $color-EURO-background;
+}
+
+
+// ########## FLEX boxes
+.flexbox-container{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+}
+
+@mixin flexbox($val) {
+-webkit-flex: $val;  /* Safari 6.1+ */
+	-ms-flex: $val;  /* IE 10 */    
+		flex: $val;
+}
+
+.flexbox-box-1{	@include flexbox(1);}
+.flexbox-box-2{	@include flexbox(2);}
+.flexbox-box-3{	@include flexbox(3);}
+.flexbox-box-4{	@include flexbox(4);}
+.flexbox-box-5{	@include flexbox(5);}
+.flexbox-box-6{	@include flexbox(6);}
+
+// Layout centering Container, removing padding on mobile
+.lc {
+	@extend .clearfix;
+	max-width: $max-width;
+	display:block;
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 0;
+	padding-right: 0;
+
+	@include mq($bp-large) {
+		@include rem( padding-left, 1.5em);
+		@include rem( padding-right, 1.5em);
+	}
+}
+
+.staticcontent, 
+.contact, 
+.login, 
+.account,
+.subscribe{ 
+	@include mq($bp-large) {
+		background-color: #F8F8F8; 
+	}
+}
+
+// just to hide the old modal from the layout
+.modal { display: none !important; }
+
+
+// Rows & Columns --------------------------------------------
+
+// Based on the excellent CSS Wizadr: https://github.com/csswizardry/inuit.css/blob/master/generic/_widths.scss
+//
+// Add width classes for each major width brake point
+// eg .s-one-whole, m-one-half, .l-one-quarter, .xl-one-sixth
+
+.row {
+	@extend .clearfix;
+}
+
+@mixin grid-setup($namespace: "") {
+
+  // Utility class
+	.#{$namespace}-hide              { display: none; }
+	.#{$namespace}-show              { display: block; }
+	.#{$namespace}-show-inline       { display: inline-block; }
+	.#{$namespace}-width-auto        { width: auto; }
+	.#{$namespace}-left              { float: left; }
+	.#{$namespace}-right             { float: right; }
+	.#{$namespace}-none              { float: none; }
+
+
+  // Whole
+	.#{$namespace}-one-whole         { width:100%; }
+
+
+  // Halves
+	.#{$namespace}-one-half          { width:50%; float: left; }
+
+
+  // Thirds
+	.#{$namespace}-one-third         { width:33.333%; float: left; }
+	.#{$namespace}-two-thirds        { width:66.666%; float: left; }
+
+
+  // Quarters
+	.#{$namespace}-one-quarter       { width:25%; float: left; }
+	.#{$namespace}-two-quarters      { width:50%; float: left; }
+	.#{$namespace}-three-quarters    { width:75%; float: left; }
+
+
+  // Fifths
+	.#{$namespace}-one-fifth         { width:20%; float: left; }
+	.#{$namespace}-two-fifths        { width:40%; float: left; }
+	.#{$namespace}-three-fifths      { width:60%; float: left; }
+	.#{$namespace}-four-fifths       { width:80%; float: left; }
+
+
+  // Sixths
+	.#{$namespace}-one-sixth         { width:16.666%; float: left; }
+	.#{$namespace}-two-sixths        { width:33.333%; float: left; }
+	.#{$namespace}-three-sixths      { width:50%;     float: left; }
+	.#{$namespace}-four-sixths       { width:66.666%; float: left; }
+	.#{$namespace}-five-sixths       { width:83.333%; float: left; }
+}
+
+@include grid-setup("s");
+
+@include mq($bp-medium) {
+	@include grid-setup("m");
+}
+
+@include mq($bp-large) {
+	@include grid-setup("l");
+}
+
+@include mq($bp-x-large, false) {
+	@include grid-setup("xl");
+}
+

@@ -1,0 +1,159 @@
+
+//------------------------------------
+//  Manage Engineer
+//------------------------------------
+
+.manage-eng{
+	padding: 2em;
+	&__header{
+		padding-top:1em;
+		padding-bottom:1em;
+		background-color: $color-EURO-2;
+
+		&-dropdown{
+			margin-right: 0.5em;
+			.btn{
+				min-width: 5em;
+				text-align: left;
+				.fa{
+					float:right;
+				}
+			}
+		}
+		&-filters{
+			margin-left: 1em;
+		}
+		.btn-wrapper{
+			margin-left: 1em;
+		}
+	}
+
+	.row{
+		padding-bottom: 2em;
+	}
+	&__form-buttons{
+		padding-bottom: 2em;
+		.btn{ 
+			min-width: 6em; 
+			&:nth-child(2){	margin-left: 1em;}
+		}
+	}
+
+
+	.contact-info{
+		.field-container{
+			padding-bottom: 1em;
+			width:100%;
+			float:left;
+			label{
+				width: 25%;
+				float:left;
+				&:after{content: ":";}
+			}
+			input, select{
+				width: 70%;
+				float: right;
+				padding: 0.1em 0.3em;
+			}
+			select{width:73%;}
+			.btn-datepicker{
+				width: 73%;
+				float:right;
+				position: relative;
+				input{
+					width: auto; //96%
+					float: none;
+				}
+
+				.datepicker-icon{ 
+					left:0;
+				//float:right;
+				//top: -1.6em;
+				}
+			}
+
+			.upload-photo{
+				width: 73%;
+				float:right;
+				.half{ width: 50%;}
+				.img-wrapper{
+					img{width:100%}
+				}
+				.btn-wrapper{ 
+					padding: 0 1em;
+					.btn{width:100%; margin-bottom: 1em;}
+				}
+			}
+		}
+
+		
+	}
+	.checkbox{
+		&-list{
+			&-item{
+				font-size: 0.9em;
+				padding-bottom: 0.5em;
+				label{cursor: pointer;}
+			}
+		}
+	}
+
+	&__expertise{
+		&-left{	padding-right: 2.5em;}
+		&-right{padding-left:  2.5em;}
+		.row-half:first-child{border-right:0;}
+		.is-selected{background-color: $information-light;}
+
+		.filters-accordion{
+			&__wrapper{
+				border-left: 1px solid $color-border-1;
+				border-right: 1px solid $color-border-1;
+				border-bottom: 1px solid $color-border-1;
+				&:first-child{
+					border-top: 1px solid $color-border-1;
+				}
+
+				&.is-open{
+					.filters-accordion__container{
+						height:auto;
+						opacity: 1;
+						transform: translateY(0);
+						@include transition(opacity		.5s linear);
+						@include transition(height		.5s linear);
+						@include transition(transform	.2s linear);
+					}
+					.filters-accordion__title{
+						background-color: $color-background-3;
+						&:hover{
+							background-color: $color-background-3-hover;
+						}
+					}
+				}
+			}
+			&__title{
+				margin:0;
+				padding: 0.35em;
+				&:hover{
+					background-color: $color-background-3-hover;
+				}
+			}
+			&__container{
+				height:0;
+				opacity: 0;
+				transform: translateY(-10000em);
+				@include transition(opacity		.8s linear);
+				@include transition(height		.5s linear);
+				@include transition(transform	.2s linear);
+
+				&-item{
+					padding:0.25em 0.3em 0.2em 1.25em;
+					border-top: 1px solid $color-border-1;
+					font-size: 0.95em;
+					label{
+						cursor: auto;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,32 @@
+
+//------------------------------------
+//  LOGIN
+//------------------------------------
+
+.login{
+	form{
+		width:25%;
+		margin: auto;
+		text-align: center;
+		.fa{
+			font-size: 2em;
+		}
+		label{
+			display:block;
+			display:none;
+		}
+		.field-container{
+			padding: 1em;
+			margin: 1em;
+			input{
+				padding: 0.5em;
+				width: 20em;
+			}
+		}
+	}
+
+	&__button{
+		padding: 0.8em 1.5em;
+		margin-bottom: 1em;
+	}
+}

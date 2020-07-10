@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Vodafone Working At Height</title>
+    <link rel="stylesheet" href="Content/main.css" media="(min-width:0)">
+    <link href='fonts/fonts.css' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    
+</head>
+<body>
+      
+    <!-- App appears here -->
+    <div id="applicationHost" data-ng-app="app">  
+        <navigation></navigation>
+        <div data-ng-view class="maxheight"></div>
+    </div>
+
+    <!-- Angular -->
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-animate.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Scripts/angular-resource.min.js"></script>
+    
+    <!-- 3rd Party libs -->
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/fixto.js"></script>
+    <script src="Scripts/lodash.min.js"></script>
+    <script src="Scripts/q.js"></script>
+    <script src="Scripts/three.min.js"></script>
+    <script src="Scripts/renderers/Projector.js"></script>
+    <script src="Scripts/renderers/CanvasRenderer.js"></script>
+    <script src="Scripts/SCORM_API_wrapper.js"></script>
+    
+    <!-- App libraries -->
+    <script src="app.module.js"></script>
+    <script src="config.js"></script>
+    <script src="core/_module.js"></script>
+    <script src="core/config.js"></script>  
+    
+   
+    <!-- Features -->    
+    <script src="features/main/_module.js"></script>
+    <script src="features/main/_route.js"></script>
+    <script src="features/main/main.js"></script>
+    
+    <script src="features/loading/_module.js"></script>
+    <script src="features/loading/_route.js"></script>
+    <script src="features/loading/loading.js"></script>
+    
+    <script src="features/intro/_module.js"></script>
+    <script src="features/intro/_route.js"></script>
+    <script src="features/intro/intro.js"></script>
+    
+    <script src="blocks/router/_module.js"></script>
+    <script src="blocks/router/routeHelper.js"></script>
+    
+    <!-- Directives -->
+    <script src="directives/ciobStaticView.js"></script>
+    
+    <!-- Misc -->
+    <script src="services/preLoader.js"></script>
+    <script src="common/common.js"></script>
+    <script src="common/sections.js"></script>
+    <script src="common/scorm.js"></script>
+    <script src="layout/navigation.js"></script>
+    
+    <div id="browserNotSupported"></div>
+    
+    <script>
+        if (detectIE() !== false && detectIE() < 9)
+            document.getElementById("browserNotSupported").innerHTML = "<font color='red'>Browser unsupported.  Please upgrade your browser.</font>";
+    </script>
+</body>
+</html>

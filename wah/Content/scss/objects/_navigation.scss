@@ -1,0 +1,39 @@
+
+//------------------------------------
+//  NAVIGATION
+//------------------------------------
+
+.nav{
+	background-color: $color-EURO-1;
+	padding: 1em 0;
+	&__list {
+		&-item {
+			text-transform: uppercase;
+			margin-right: 1em;
+			padding-top: 0.45em;
+			position: relative;
+			a {
+				&:visited, &:link {
+					color: $color-white;
+				} 
+				&:hover {
+					color: darken($color-white, 20%);
+				}
+			}
+			&.active {
+				&:after {
+					content: "";
+					width: 0;
+					height: 0;
+					position: absolute;
+					left: 30%;
+					top: 145%;
+					border-left: 15px solid transparent;
+					border-right: 15px solid transparent;
+					border-bottom: 15px solid $color-EURO-2;
+				}
+				//translate canvas be used to animate thead arrow fading input from thead bottom
+			}
+		}
+	}
+}

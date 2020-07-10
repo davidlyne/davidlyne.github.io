@@ -1,0 +1,161 @@
+
+//------------------------------------
+//  DIALOG
+//------------------------------------
+
+.dialog{
+	background-color: $color-gray-70;
+	border-radius: 5px;
+	padding: 0.1em 0.8em;
+
+	&_close{
+		border: none;
+		background: none;
+		font-size: 1.3em;
+		float:right;
+	}
+
+	&__small{
+		width: 14em;
+		position: relative;
+		&:after{
+			content: " ";
+			position: absolute;
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;
+			border-bottom: 9px solid $color-gray-70;
+			top: -8px;
+			left:46%;
+		}
+	}
+}
+
+$dialog-filters-width: 18em; //this is the width of the displayed area
+ 
+.dialog-filters{
+	&__content{
+		&-wrapper{
+			position: absolute;
+			z-index: 999;
+			background-color: $color-white;
+			width: $dialog-filters-width;
+			padding-top: 1em;
+			height:0;
+			opacity: 0;
+			transform: translateY(-999em);
+			@include transition(all	.5s linear);
+
+			&.is-displayed{
+				height:auto;
+				opacity: 1;
+				transform: translateY(0%);
+				@include transition(all	.5s linear);
+			}
+		}
+		&-inner{
+			border: 1px solid $color-border-1;
+			overflow:hidden;
+
+			&:after{
+				content: "";
+				position: absolute;
+				top:0;
+				border-left: 15px solid transparent;
+				border-right: 15px solid transparent;
+				border-bottom: 15px solid #E7E6E6;
+			}
+		}
+	}
+	&__half{
+		width:50%;
+		max-height: 35em;
+		overflow-y: auto;
+	}
+	&__whole{ 
+		width: $dialog-filters-width * 2;
+		transform: translate(0);
+		@include transition(all	.3s linear);
+		&.show-sub-level{
+			transform: translate(-50%);
+			@include transition(all	.3s linear);
+		}
+	}
+
+
+	&__list{
+		&-item{
+			border-top: 1px solid $color-border-1;
+			padding: 0.8em 0.6em;
+			&:first-child{border-top:0;}
+			label{cursor:pointer; }
+			&-label{font-size: 0.95em;}
+		}
+	}
+	&__sublist{
+		&-item{
+			border-top: 1px solid $color-border-1;
+			padding: 0.16em 0.6em;
+			&:first-child{border-top:0;}
+			&:nth-child(2){font-weight: bold;}
+			label{cursor:pointer;}
+			&-label{font-size: 0.9em; max-width: 40%;}
+			&.add-edit{
+				padding: 0.8em 0.6em;
+				&:first-child{font-weight: bold;}
+				&:nth-child(2){
+					font-weight: normal;
+				}
+			}
+		}
+	}
+	//&__level{width:60%;}
+
+	&__instructor{
+		label{ 
+			font-size: 0.8em;
+			padding-left: 1em;
+		}
+	}
+
+	.is-selected{
+		background-color: $information-light;
+	}
+}
+
+.dialog-calendar-filter{
+	position: absolute;
+	left: -6.65em;
+	top: 0.325em;
+	z-index: 2;
+	.field-container{
+		margin-bottom: 1em;
+		input{width: 91%;}
+		select{ width: 98%;}
+		input, select{ padding: 0.3em 0.3em;}
+	}
+	&__title{padding-bottom: 0.3em; text-align:left;}
+
+	&__buttons{
+		.btn-multiple{ 
+			max-width: 44%;
+			font-size: 0.9em;
+			&:first-child{ padding-top: 0.6em;}
+		}
+
+		&.row{
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+		}
+		.row-half{
+			-webkit-flex: 1;
+			-ms-flex: 1;
+			flex: 1;
+		}
+	}
+
+	.dialog{
+		//background-color: $color-gray-50;
+		box-shadow: 0em 0em 0.5em 0.1em $color-gray-50;
+	}
+}

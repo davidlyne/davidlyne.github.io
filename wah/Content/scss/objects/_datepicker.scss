@@ -1,0 +1,43 @@
+
+//------------------------------------
+//  DATEPICKER
+//------------------------------------
+
+.datepicker{
+	&__small{
+		&-date{
+			width: 10em;
+			margin: 0 0.5em;
+		}
+	}
+}
+
+.dialog-datepicker{
+	width: 14em;
+	position: relative;
+	.dialog{
+		padding-bottom: 0.3em;
+	}
+	&__title{
+		margin: 0.5em 0;
+	}
+	&__textarea{
+		width: 95%;
+	}
+	.datepicker{
+		&__small{
+			&-date{
+				width: 5em;
+			}
+		}
+	}
+	&:after{
+		content: " ";
+		position: absolute;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-bottom: 9px solid $color-gray-70;
+		top: -8px;
+		left:46%;
+	}
+}

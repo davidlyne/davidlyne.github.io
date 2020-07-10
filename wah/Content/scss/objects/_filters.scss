@@ -1,0 +1,104 @@
+
+//------------------------------------
+//  FILTERS
+//------------------------------------
+
+.filters{
+	&__tab{
+		&-head{
+			padding-left: 1.5em;
+			a{
+				&:visited, &:link {
+					color: $color-white;
+				} 
+				&:hover {
+					color: darken($color-white, 20%);
+					.fa {
+						@include transform-scale(1.25);
+						@include transition(transform .25s linear);
+					}
+				}
+				.fa {
+					margin-left: 0.25em;
+					@include transform-rotate(0);
+					@include transition(transform .25s linear);
+				}
+				&.active {
+					.fa {
+						@include transform-rotate(90deg);
+						@include transition(transform .25s linear);
+					}
+					position:relative;
+					&:after {
+						content: "";
+						width: 0;
+						height: 0;
+						position: absolute;
+						left: 17%;
+						top: 175%;
+						border-left: 15px solid transparent;
+						border-right: 15px solid transparent;
+						border-top: 15px solid $color-EURO-2;
+					}
+				}
+			}
+		}
+	}
+	&__panel{
+		background-color: $color-notification-filter;
+		border-bottom:1px solid $color-white;
+		&-inner{
+			padding: 1.5em 0;
+		}
+		&-content{
+			.panel-titles{
+				padding-bottom: 0.5em;
+			}
+			.panel-title{
+				margin:0;
+			}
+			&.multilevel{
+				.filters__panel-item{
+					font-size:0.75em;
+				}
+			}
+			&-datepicker{
+				font-size: 0.9em;
+				.datepicker__small-date{
+					width: 40%;
+				}
+				.datepicker__small-time{
+					-webkit-appearance: none;
+					-moz-appearance: none;
+					appearance: none;
+				}
+				.datepicker-label{
+					width: 18%;
+					padding-top: 0.15em;
+				}
+				.datepicker-wrapper{
+					margin-bottom: 0.5em;
+				}
+			}
+		}
+		&-item{
+			padding-top: 0.5em;
+			//font-size:0.75em;
+
+			input{ 
+				margin-right:0.5em;
+			}
+			&-title{
+				border-bottom: 1px solid $color-border-2;
+				padding-bottom: 0.5em;
+
+			}
+		}
+		&-clear{
+			padding-right: 1em;
+		}
+		&-container{
+			padding:0.5em;
+		}
+	}
+}

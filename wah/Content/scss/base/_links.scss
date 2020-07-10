@@ -1,0 +1,36 @@
+
+//------------------------------------
+//  LINKS
+//------------------------------------
+
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  outline: 0;
+  cursor: pointer;
+  @include transition (
+    color 0.15s ease-in,
+    background-color 0.15s ease-in,
+    opacity 0.15s ease-in,
+    border 0.15s ease-in
+  );
+
+  &:hover {
+    color: $link-color-hover;
+  }
+  &:focus {
+    color: $link-color-hover;
+    outline: thin dotted;
+  }
+  &:active {
+    color: $link-color-active;
+  }
+  &:visited {
+    color: $link-color-visited;
+  }
+
+  & img {
+    border: 0;
+  }
+}

@@ -1,0 +1,142 @@
+
+//------------------------------------
+//  CARD
+//------------------------------------
+
+.card{
+	padding: 0.75em;
+	//padding-bottom:0;
+	//padding-top: 1em;
+	//border: 1px solid $color-border-1;
+	//margin: 0.5em;
+
+	//&:hover{
+	//	background-color: $color-background-3-hover;
+	//}
+	&__inner{
+		//padding: 1em;
+		//border: 1px solid $color-border-1;
+		min-height: 9em;
+		overflow:hidden;
+	}
+
+	&__info{
+		&-title{
+			margin-bottom: 1.5em;
+			&-name{
+				margin-top:0;
+				margin-bottom: 0.6em;
+				color: $color-title-1;
+				font-size: 1.25em;
+			}
+			&-role{
+				margin:0;
+				line-height: 1em;
+				font-size: 1em;
+				font-weight: normal;
+				&-wrapper{
+					width:100%;
+				}
+			}
+		}
+		&-content{
+			&-row{
+				font-size:0.795em;
+				margin:0;
+				span{
+					white-space: nowrap;
+					@include mq($bp-large-2){
+						white-space: normal;
+					}
+					@include mq($bp-xxl){
+						white-space: nowrap;
+					}
+				}
+			}
+		}
+	}
+
+	&__photo{
+		&-wrapper{
+			max-width: 7em;
+			float:right;
+			height: 7em;
+			overflow: hidden;
+			img{
+				width:100%;
+			}
+		}
+	}
+
+	//&.is-selected{
+	//	background-color: $color-background-3;
+
+	//	&:after{
+	//		content: "";
+	//		width: 0;
+	//		height: 0;
+	//		//position: absolute;
+	//		margin-left: 47%;
+	//		border-left: 15px solid transparent;
+	//		border-right: 15px solid transparent;
+	//		border-bottom: 15px solid $color-background-1;
+	//	}
+	//}
+}
+
+.card-detail{
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+	&__photo{
+		&-inner{
+			max-width: 20em;
+			padding: 0.65em;
+		}
+		&-wrapper{
+			//max-width: 20em;
+			img{
+				width:100%;
+			}
+		}
+		&-buttons{
+			width: 100%;
+			padding-top: 1em;
+			font-size: 0.9em;
+			.btn{ width:40%;}
+		}
+	}
+	&__info{
+		&-name{
+			margin:0;
+		}
+		&-role{
+			margin-top:0.25em;
+			margin-bottom: 1.5em;
+			font-weight: normal;
+		}
+		&-inner{
+			padding: 1em 0 0 2em;
+			color: $color-white;
+			font-size: 0.85em;
+		}
+		&-list{
+			&-item{
+				&-label{
+
+				}
+				&-content{
+					margin:0;
+					float:left;
+				}
+				&-wrapper{
+					width:100%;
+					padding-bottom: 0.5em;
+				}
+			}
+			label{
+				min-width: 4em;
+				float:left;
+			}
+		}
+	}
+}

@@ -1,0 +1,92 @@
+
+//------------------------------------
+//  ADD EVENT
+//------------------------------------
+
+.add-event{
+	.overlay_container{
+		min-height: 30em;
+	}
+	&__dropdown{
+		padding-bottom: 1em;
+		.btn{
+			border: 1px solid $color-gray-40;
+			min-width: 8em;
+		}
+		.dropdown-menu{
+			//display:block;
+			min-width: 8em;
+			left:0;
+			padding: 0;
+			border: 1px solid $color-gray-40;
+			margin-top:0;
+			a{
+				text-align:left;
+			}
+			li{
+				border-top: 1px solid $color-gray-40;
+				border-left: 1px solid $color-gray-40;
+				border-right: 1px solid $color-gray-40;
+			}
+			li:first-child{
+				border-top:0;
+			}
+		}
+		.fa{
+			float:right;
+		}
+		&-type{
+			.btn{
+				width:95%;
+				&-dropdown{
+					width:100%;
+				}
+			}
+		}
+	}
+	&__dates{
+		&-title{
+			font-weight: bold;
+		}
+		&-list{
+			display:inline;
+			li{
+				display:inline;
+				margin-left: 0.5em;
+				a{
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+
+	&__datepicker{
+		display:inline;
+		&-wrapper{
+			padding: 1em 0;
+		}
+		&-text{
+			display:inline;
+			margin: 0 0.5em;
+		}
+		&-all-day{
+			padding-top:0.3em;
+		}	
+	}
+
+	&__notes{
+		&-title{
+			margin-bottom:0.4em;
+			margin-top: 0.6em;
+		}
+		textarea{
+			width:100%;
+			padding: 0.5em 0 0 0.5em;
+		}
+	}
+
+	&__save{
+		float:right;
+		border: 1px solid $color-gray-40;
+	}
+}

@@ -1,0 +1,160 @@
+
+//------------------------------------
+//  TEXT RELATED ELEMENTS
+//------------------------------------
+
+
+//  1. TEXT: Defaults
+//  2. TEXT: Content area modifiactions
+
+
+//===========================================
+//  1. TEXT: Defaults
+
+// The humble paragraph
+p {
+	margin: 0 0 0.5em 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+	margin: 0.5em 0 0.5em 0;
+}
+
+.centered {
+	text-align: center;
+}
+
+
+// Selection
+::selection {background: $selection-bg; color: $selection-color;}
+::-moz-selection {background: $selection-bg; color: $selection-color;}
+
+
+// Blockquote
+blockquote {
+	font-size: 1.25em;
+	color: $blockquote-color;
+	margin: 0 0 1em;
+	padding: 1em 1.5em 1em;
+	border-left: 1px solid $blockquote-hilight;
+
+	p {
+		&::before {content:'\201C';}
+		&::after {content:'\201D';}
+		@include font-italic();
+		margin-bottom: 0;
+	}
+
+}
+
+cite {
+	display: block;
+	font-size: 0.75em;
+	color:$color-EOS-1;
+	font-style: normal;
+	margin: 1em 0 0 0;
+}
+
+cite:before {content: "- "}
+
+cite a {
+	font-weight: normal;
+	display: inline-block;
+	line-height: 1;
+}
+
+
+
+// Horizontal Rule
+hr {
+	border: 0;
+	height: 1px;
+	background: $color-gray-60;
+	margin: 1em 0;
+}
+
+
+
+// Abbreviations
+abbr {
+	border-bottom: 1px dotted inherit;
+	cursor: help;
+}
+
+
+
+address {
+	font-style: normal;
+}
+
+
+
+time {
+	margin: 0;
+}
+
+
+
+del {
+	text-decoration:line-through;
+}
+
+
+
+mark,
+.highlight {
+	color: $color-gray-10;
+	background: $heighlight;
+	display: inline;
+	padding: 0.15em 0.25em 0.2em;
+}
+
+
+
+//===========================================
+//  2. TEXT: Content area modifiactions
+
+.text {
+
+  // Paragraph modification
+	p {
+		@include rem(font-size, 14px);
+		line-height: 1.75;
+	}
+
+  // Anchor in content markup
+	a {
+		text-decoration: underline;
+	}
+
+  // Lists in content markup
+	ul, ol {
+		margin: 0.5em 0 1em 1.2em;
+
+		ul, ol {
+			margin-bottom: 0;
+		}
+	}
+
+	ul {
+		list-style-type: disc;
+	}
+
+	ol {
+		list-style-type: decimal;
+	}
+
+	li {
+		margin-left: .8em;
+		margin-bottom: .8em;
+	}
+
+	.list-no-style {
+		margin: 0.5em 0 1em;
+		list-style-type: none;
+
+		li {
+			margin-left: 0;
+		}
+	}
+}

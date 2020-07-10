@@ -1,0 +1,98 @@
+
+//------------------------------------
+//  TABLE CLIENTS
+//------------------------------------
+
+.table-priority{
+	text-align: left;
+	thead{
+		tr{
+			background-color: $color-gray-60;
+			th{
+				border: 1px solid $color-gray-40;
+				padding: 0.3em 0.6em;
+			}
+		}
+	}
+	&__item{
+		text-transform: capitalize;
+		td{
+			border: 1px solid $color-gray-40;
+			padding: 0.3em 0.6em;
+			max-width: 20em;
+		}
+
+		&-dueDate{
+			.date-range{
+				font-size: 0.7em;
+			}
+		}
+		&-priority{
+			width: 5em;
+		}
+	}
+	&__item.is-selected{
+		background-color: $color-selected;
+	}
+	&__item.clickable-row{
+		cursor: pointer;
+		&:hover{
+			background-color: $color-EOS-5;
+			.table-priority__item-status{
+				background-color: $color-EOS-5;
+			}
+		}
+	}	
+	&__item.is-planned{
+		.table-priority__item-status{
+			background-color: $color-EOS-8;
+			&:after{
+				float: right;
+				border-radius: 1em;
+				width: 1em;
+				height: 1em;
+				background-color: #000;
+				content: " ";
+				margin-top: 2px;
+			}
+		}
+	}
+
+	//&__item.is-planned.is-waiting{
+	//	.table-priority__item-status{
+	//		background-color: $color-EOS-8;
+	//	}
+	//}
+	&__item.is-planned.is-accepted{
+		.table-priority__item-status{
+			background-color: $valid;
+		}
+	}
+	&__item.is-planned.is-rejected{
+		.table-priority__item-status{
+			background-color: $error;
+		}
+	}
+
+	&__item.priority-high{
+		.priority-icon{background-color: $color-priority-high;}
+	}
+	&__item.priority-medium{
+		.priority-icon{background-color: $color-priority-medium;}
+	}
+	&__item.priority-low{
+		.priority-icon{background-color: $color-priority-low;}
+	}
+}
+
+.priority-icon{
+	border-radius: 1em;
+	width: 1em;
+	height: 1em;
+	margin: auto;
+	margin-top: 2px;
+
+	&__high{background-color: $color-priority-high;}
+	&__medium{background-color: $color-priority-medium;}
+	&__low{background-color: $color-priority-low;}
+}

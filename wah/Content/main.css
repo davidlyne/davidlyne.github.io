@@ -1,0 +1,868 @@
+/*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body {
+    overflow: hidden;
+    font-family: Roboto, Arial, sans-serif;
+    font-size:12px;
+    letter-spacing:0.01em;
+    margin: 0px;
+    background-color: #000000;
+}
+
+#fourByThreeFrame {
+    position: fixed;
+    margin: 0 auto;
+}
+
+#mainContent {
+    width:100%;
+    height:100%;
+    position: absolute;
+    left:0;
+    top:0;
+    z-index:0;
+    background-color: #000000;
+}
+
+#mainContent .fallbackImage {
+    width:100%;
+}
+
+#mainContent #videoPlayer {
+    width:100%;
+    height:100%;
+    position: absolute;
+    left:0;
+    top:0;
+    z-index:-1;
+}
+
+#leftStripUI {
+    width: 7.5%;
+    position: relative;
+    z-index: 2;
+    background-color: #7e9db1;
+}
+
+#leftStripUI #logoImg {
+    width: 100%;
+}
+
+#leftStripUI ul {
+    width:100%;
+    margin:0;
+    padding:0;
+}
+
+#leftStripUI li {
+    width:100%;
+    list-style: none;
+}
+
+#leftStripUI ul#numberButtons {
+    margin-top:35%;
+    margin-bottom:0%;
+    cursor: pointer;
+}
+
+#leftStripUI ul#numberButtons li {
+    margin-bottom:18%;
+    position: relative;
+}
+
+#leftStripUI ul#numberButtons .button {
+    width:100%;
+    position:relative;
+    z-index:3;
+    background-image:url(img/buttonCircleA.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#leftStripUI ul#numberButtons .button:hover,
+#leftStripUI ul#numberButtons .button.active {
+    background-image:url(img/buttonCircleB.png);
+}
+
+#leftStripUI ul#numberButtons .number {
+    text-align: center;
+    font-size: 0.6em;
+    font-weight:bold;
+}
+
+#leftStripUI ul#numberButtons .connection {
+    width:200%;
+    height: 0.15em;
+    position: absolute;
+    left:78%;
+    top:50%;
+    z-index:4;
+    background-color: #0054a4;
+}
+#leftStripUI ul#numberButtons .note {
+    width: 300%;
+    position: absolute;
+    z-index: 5;
+    left: 180%;
+    top: 0;
+    padding: 13% 30%;
+    background-color: #b6d0e4;
+    border-style: solid;
+    border-width: 0.25em;
+    border-color: #0054a4;
+    font-size: 0.6em;
+    text-align: center;
+}
+
+#leftStripUI ul#iconButtons {
+    margin-top:10%;
+}
+
+#leftStripUI ul#iconButtons li {
+    margin-bottom:15%;
+}
+
+#leftStripUI ul#iconButtons li img {
+    width:100%;
+}
+
+#mainPanelFooter {
+    width:90%;
+    height:24%;
+    position:absolute;
+    left:8.75%;
+    top:72%;
+}
+
+#mainPanelFooter #footerNote {
+    height: 60%;
+    text-align: center;
+    overflow: hidden;
+}
+
+
+#mainPanelFooter #footerNote span {
+    color:#F2F8FF;
+    font-size:0.7em;
+    display:inline-block;
+    padding: 0.8em 1.2em;
+    background: #8e8f90; /* Old browsers */
+    background: -moz-linear-gradient(top,  #8e8f90 0%, #496177 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #8e8f90 0%,#496177 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #8e8f90 0%,#496177 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8e8f90', endColorstr='#496177',GradientType=0 ); /* IE6-9 */
+    border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+    border: 2px solid #0054a4;
+}
+
+#mainPanelFooter #playPause {
+    width:6%;
+    margin:0 auto;
+    cursor: pointer;
+}
+
+#introGroup {
+    width:33%;
+    height:45%;
+    position:absolute;
+    left:30%;
+    top:25%;
+    background: #FFFFFF;
+    color:#000000;
+}
+
+#introHeader {
+    z-index:999;
+    width:100%;
+    height:15%;
+    background: #DF0000;
+    color:#FFFFFF;
+    padding: 0.0em 0.0em;
+
+}
+
+#introButton {
+    z-index:1;
+    position: absolute;
+    width:100%;
+    height:20%;
+    background: #788D15;
+    color:#FFFFFF;
+    top: 100%;
+    cursor: pointer;
+}
+
+#introButton:hover {
+    background: #A8B41D;
+}
+
+#introButton span {
+  font-weight: Light;
+    position:absolute;
+    width:100%;
+    left:35.5%;
+    top:15%;
+}
+
+#introContent {
+    font-size:0.6em;
+    padding: 0.5em 1.0em;
+}
+
+#introContent span {
+    position:absolute;
+    width:100%;
+    left:0%;
+    top:88%;
+}
+
+#introContent img {
+    position:absolute;
+    align:center;
+    width:92%;
+    height: 66%;
+    left:4%;
+    top:20%;
+}
+
+#outroGroup {
+    width:33%;
+    height:53%;
+    position:absolute;
+    left:30%;
+    top:20%;
+    background: #FFFFFF;
+    color:#000000;
+}
+
+#outroHeader {
+    z-index:999;
+    width:100%;
+    height:13%;
+    background: #DF0000;
+    color:#FFFFFF;
+    padding: 0.0em 0.0em;
+
+}
+
+#outroHeader span{
+    top:1%;
+    left:33%;
+    font-size:0.9em;
+    position:absolute;
+
+}
+
+
+#outroButton {
+    z-index:1;
+    position: absolute;
+    width:100%;
+    height:20%;
+    background: #788D15;
+    color:#FFFFFF;
+    top: 100%;
+    cursor: pointer;
+}
+
+#outroButton:hover {
+    background: #A8B41D;
+}
+
+#outroButton span {
+    font-size:0.85em;
+    font-weight: Light;
+    position:absolute;
+    width:100%;
+    left:44%;
+    top:25%;
+}
+
+#outroContent {
+    font-size:0.6em;
+    padding: 0.5em 1.0em;
+}
+
+#outroContent .logo{
+    position:absolute;
+    width:60%;
+    height:18%;
+    left:20%;
+    top:94%;
+}
+
+#outroContent .seperator{
+    position:absolute;
+    width:80%;
+    height:0.7%;
+    left:10%;
+    top:82%;
+}
+
+#outroContent span {
+    position:absolute;
+    width:90%;
+    left:5%;
+    top:16%;
+    font-size:0.85em;
+}
+
+#outroContent img {
+    position:absolute;
+    align:center;
+    width:92%;
+    height: 66%;
+    left:4%;
+    top:20%;
+}
+
+@keyframes infoGrow {
+  0% {
+    transform: scale(0.5);
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  
+  100% {
+    transform: scale(1.0);
+  }
+}
+
+
+#infoGroup {
+    animation: continueGrow 0.3s;
+    animation-iteration-count: 1;
+    width:54%;
+    height:25%;
+    position:absolute;
+    left:23%;
+    top:65%;
+    background: #FFFFFF;
+    color:#000000;
+}
+
+#infoHeader {
+    z-index:999;
+    width:100%;
+    height:27%;
+    background: #DF0000;
+    color:#FFFFFF;
+    padding: 0.0em 0.0em;
+
+}
+
+#infoButton {
+    z-index:1;
+    position: absolute;
+    width:100%;
+    height:27%;
+    background: #788D15;
+    color:#FFFFFF;
+    top: 100%;
+    cursor: pointer;
+}
+
+#infoButton:hover {
+    background: #A8B41D;
+}
+
+#infoButton center {
+  font-weight: Light;
+}
+
+#infoHeader span {
+  font-size:0.8em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#infoContent {
+    font-size:0.6em;
+    padding: 0.5em 1.0em;
+}
+
+#infoPointCount{
+    position: absolute;
+    color:#FFFFFF;
+    top: 90%;
+    text-align: center;
+    width: 100%;
+}
+
+@keyframes continueGrow {
+  0% {
+    opacity:0;
+  }
+  40% {
+    opacity:0;
+  }
+  41% {
+    opacity:1;
+    transform: scale(0.5);
+  }
+  90% {
+    transform: scale(1.1);
+  }
+  
+  100% {
+    transform: scale(1.0);
+  }
+}
+
+#continueButton {
+    animation: continueGrow 0.4s;
+    animation-iteration-count: 1;
+
+    z-index:1;
+    position: absolute;
+    width:20%;
+    height:8%;
+    background: #788D15;
+    color:#FFFFFF;
+    top: 89%;
+    left: 40%;
+    cursor: pointer;
+}
+
+#continueButton:hover {
+    background: #A8B41D;
+}
+
+#continueButton span {
+    font-size:0.85em;
+    font-weight: Light;
+    position:absolute;
+    width:100%;
+    text-align: center;
+    top:17%;
+}
+
+#skipButton {
+    z-index:1;
+    position: absolute;
+    width:20%;
+    height:8%;
+    background: #788D15;
+    color:#FFFFFF;
+    top: 89%;
+    left: 40%;
+    cursor: pointer;
+}
+
+#skipButton:hover {
+    background: #A8B41D;
+}
+
+#skipButton span {
+    font-size:0.85em;
+    font-weight: Light;
+    position:absolute;
+    width:100%;
+    text-align: center;
+    top:17%;
+}
+
+
+#mainPanelFooter #playPause img {
+    width:100%;
+}
+
+#documentPopUp {
+    width:60%;
+    height:66%;
+    position: absolute;
+    z-index:1;
+    left:18.75%;
+    top: 7%;
+    overflow:scroll;
+    background:#fff;
+    padding:5% 4%;
+    font-size:0.6em;
+}
+
+#mainPanelHeader {
+    width:90%;
+    height:24%;
+    position:absolute;
+    left:89%;
+    top:3%;
+}
+
+@keyframes bounce {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.3);
+  }
+}
+
+#mainPanelHeader #rotate {
+    width:8%;
+
+}
+
+.img360 {
+    width:100%; 
+}
+
+.img360Animate {
+    animation: bounce 0.35s;
+    animation-iteration-count: 8;
+    animation-direction: alternate;
+}
+
+#documentPopUp p,
+#documentPopUp img {
+    width:100%;
+    margin: 0 0 1.4em 0;
+}
+
+#popUpScreen {
+    width:100%;
+    height:100%;
+    position:absolute;
+    z-index:0;
+    top:0px;
+    left:0px;
+    background-color: #000;
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+
+#closePopUp {
+    width:92.5%;
+    position:absolute;
+    top:90%;
+    left:7.5%;
+    color:#fff;
+    font-size:0.8em;
+    text-align: center;
+    cursor: pointer;
+}
+
+#cad {
+    cursor: pointer;
+}
+
+#exit {
+    cursor: pointer;
+}
+
+#overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */    
+    height: 100%;
+    width: 100%;
+    position: fixed; /* Stay in place */
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0); /* Black fallback color */
+    background-color: rgba(0,0,0, 0); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+}
+
+#errorOverlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+    left:0%;
+    top:0%;
+    height: 100%;
+    width:  100%;
+    position: absolute; 
+    background-color: rgb(0,0,0); /* Black fallback color */
+    background-color: rgba(0,0,0, 1); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+}
+
+#errorOverlay span {
+    font-size:0.85em;
+    position:absolute;
+    width:100%;
+    left:0%;
+    top:50%;
+    text-align:center;
+}
+#exitButton {
+    top: 60%;
+    left: 40%;
+    position: absolute;
+    width:20%;
+    height:9%;
+    background: #788D15;
+    color:#FFFFFF;
+    cursor: pointer;
+}
+
+#exitButton:hover {
+    background: #A8B41D;
+}
+
+#exitButton span {
+    position:absolute;
+    width:100%;
+    left:0%;
+    top: 20%;
+    text-align:center;
+}
+
+.loadingScreen,
+.introScreen {
+    width:100%;
+    height:100%;
+    position: relative;
+}
+
+.loadingScreen #content {
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:25%;
+    left:0;
+    font-size:0.5em;
+    text-align:center;
+    overflow:hidden;
+}
+
+.loadingScreen #loadingLogo {
+    width:35%;
+    margin-bottom: 20%;
+}
+
+.loadingScreen #progressBar {
+    width: 80%;
+    height: 1%;
+    margin:0 0 1.5% 10%;
+    border-radius: 3px; 
+    -moz-border-radius: 3px; 
+    -webkit-border-radius: 3px; 
+    border: 1px solid #ccc;
+}
+
+.loadingScreen #progressMeter {
+    width:0%;
+    height:100%;
+    background-color:#fff;
+}
+
+.introScreen video {
+    width:100%;
+    height:100%;
+}
+
+.introScreen #content {
+    width:40%;
+    position:absolute;
+    top:35%;
+    left:30%;
+    text-align:center;
+}
+
+.introScreen #introLogo {
+    background-color:#fff;
+    text-align: center;
+    margin-bottom: 15%;
+}
+
+.introScreen #content img {
+    width:92%;
+    padding:4%;
+}
+
+.introScreen #content h1 {
+    font-size:0.98em;
+    margin:0;
+    padding-bottom: 5%;
+}
+
+.introScreen #content #start img {
+    width:35%;
+}
+
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+
+@media (min-width: 320px) {
+
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
